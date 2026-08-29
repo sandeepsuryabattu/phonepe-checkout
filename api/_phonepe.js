@@ -1,6 +1,5 @@
 import crypto from 'node:crypto';
 
-// In-memory token cache across function invocations
 let cachedToken = null;
 let tokenExpiresAt = 0;
 
@@ -13,12 +12,15 @@ export async function getPhonePeAuthToken() {
     return cachedToken;
   }
 
-  const clientId = process.env.PHONEPE_CLIENT_ID;
-  const clientSecret = process.env.PHONEPE_CLIENT_SECRET;
-  const clientVersion = process.env.PHONEPE_CLIENT_VERSION || '1';
-  const isProd = process.env.PHONEPE_ENV === 'production' || process.env.NODE_ENV === 'production';
+  const clientId = (process.env.PHONEPE_CLIENT_ID || '').trim();
+  const clientSecret = (process.env.PHONEPE_CLIENT_SECRET || '').trim();
+  const clientVersion = (process.env.PHONEPE_CLIENT_VERSION || '1').trim();
+  const envSetting = (process.env.PHONEPE_ENV || '').trim().toLowerCase();
 
-  const tokenUrl = isProd
+  const isProd = envSetting === 'production';
+
+  // Primary URL based on PHONEPE_ENV
+  const primaryUrl = isProd
     ? 'https://api.phonepe.com/apis/identity-manager/v1/oauth/token'
     : 'https://api-preprod.phonepe.com/apis/pg-sandbox/v1/oauth/token';
 
@@ -28,7 +30,7 @@ export async function getPhonePeAuthToken() {
   formParams.append('client_secret', clientSecret);
   formParams.append('grant_type', 'client_credentials');
 
-  const response = await fetch(tokenUrl, {
+  let response = await fetch(primaryUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -36,10 +38,30 @@ export async function getPhonePeAuthToken() {
     body: formParams.toString(),
   });
 
-  const data = await response.json();
+  let data = await response.json();
+
+  // If production returned Client Not Found (e.g. keys belong to sandbox/UAT), try sandbox URL
+  if (!response.ok && isProd && (data.message || '').includes('Client Not Found')) {
+    console.log('Production token endpoint returned Client Not Found. Trying Sandbox token endpoint...');
+    const sandboxUrl = 'https://api-preprod.phonepe.com/apis/pg-sandbox/v1/oauth/token';
+    const fallbackRes = await fetch(sandboxUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: formParams.toString(),
+    });
+    const fallbackData = await fallbackRes.json();
+    if (fallbackRes.ok && fallbackData.access_token) {
+      cachedToken = fallbackData.access_token;
+      tokenExpiresAt = now + (fallbackData.expires_in || 3600) * 1000;
+      return cachedToken;
+    }
+  }
 
   if (!response.ok || !data.access_token) {
-    throw new Error(data.message || data.error_description || 'Failed to obtain PhonePe OAuth token');
+    console.error('PhonePe OAuth Token Error:', data);
+    throw new Error(data.message || data.error_description || JSON.stringify(data));
   }
 
   cachedToken = data.access_token;
@@ -48,9 +70,6 @@ export async function getPhonePeAuthToken() {
   return cachedToken;
 }
 
-/**
- * Checks if V2 (OAuth) credentials are configured
- */
 export function isV2Configured() {
   return Boolean(process.env.PHONEPE_CLIENT_ID && process.env.PHONEPE_CLIENT_SECRET);
 }
