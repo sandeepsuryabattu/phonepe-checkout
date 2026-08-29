@@ -1,5 +1,5 @@
 import crypto from 'node:crypto';
-import { getPhonePeAuthToken, isV2Configured } from './_phonepe.js';
+import { getPhonePeAuth, isV2Configured } from './_phonepe.js';
 
 /**
  * Vercel Serverless Function: Check PhonePe Payment Status (V2 OAuth + V1 fallback)
@@ -17,16 +17,12 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Missing txnId query parameter' });
     }
 
-    const isProd = process.env.PHONEPE_ENV === 'production' || process.env.NODE_ENV === 'production';
-
     // ==========================================
     // V2 FLOW (Latest: OAuth 2.0 Status Check)
     // ==========================================
     if (isV2Configured()) {
-      const token = await getPhonePeAuthToken();
-      const statusUrl = isProd
-        ? `https://api.phonepe.com/apis/pg/checkout/v2/order/${txnId}/status?details=true&errorContext=true`
-        : `https://api-preprod.phonepe.com/apis/pg-sandbox/checkout/v2/order/${txnId}/status?details=true&errorContext=true`;
+      const { token, baseUrl } = await getPhonePeAuth();
+      const statusUrl = `${baseUrl}/checkout/v2/order/${txnId}/status?details=true&errorContext=true`;
 
       const response = await fetch(statusUrl, {
         method: 'GET',

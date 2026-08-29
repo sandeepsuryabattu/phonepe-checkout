@@ -1,5 +1,5 @@
 import crypto from 'node:crypto';
-import { getPhonePeAuthToken, isV2Configured } from './_phonepe.js';
+import { getPhonePeAuth, isV2Configured } from './_phonepe.js';
 
 /**
  * Vercel Serverless Function: Initiate PhonePe Payment (V2 OAuth + V1 fallback)
@@ -26,16 +26,13 @@ export default async function handler(req, res) {
     const frontendUrl = process.env.FRONTEND_URL || `${proto}://${host}`;
     const merchantTransactionId = `TXN_${Date.now()}_${crypto.randomBytes(4).toString('hex')}`;
     const redirectUrl = `${frontendUrl}/?txnId=${merchantTransactionId}`;
-    const isProd = process.env.PHONEPE_ENV === 'production' || process.env.NODE_ENV === 'production';
 
     // ==========================================
     // V2 FLOW (Latest: OAuth 2.0 with Client ID & Secret)
     // ==========================================
     if (isV2Configured()) {
-      const token = await getPhonePeAuthToken();
-      const payUrl = isProd
-        ? 'https://api.phonepe.com/apis/pg/checkout/v2/pay'
-        : 'https://api-preprod.phonepe.com/apis/pg-sandbox/checkout/v2/pay';
+      const { token, baseUrl } = await getPhonePeAuth();
+      const payUrl = `${baseUrl}/checkout/v2/pay`;
 
       const payload = {
         merchantOrderId: merchantTransactionId,
@@ -68,7 +65,7 @@ export default async function handler(req, res) {
       if (!response.ok || !data.redirectUrl) {
         console.error('PhonePe V2 Error:', data);
         return res.status(502).json({
-          error: data.message || 'Payment initiation failed',
+          error: data.message || data.error || 'Payment initiation failed',
           code: data.code,
         });
       }
