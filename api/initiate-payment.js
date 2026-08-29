@@ -43,6 +43,21 @@ export default async function handler(req, res) {
           merchantUrls: {
             redirectUrl: redirectUrl,
           },
+          paymentModeConfig: {
+            version: 'V2',
+            enabledPaymentModes: [
+              {
+                type: 'UPI',
+                flows: ['INTENT', 'QR', 'COLLECT'],
+              },
+              {
+                type: 'CARD',
+              },
+              {
+                type: 'NET_BANKING',
+              },
+            ],
+          },
         },
         metaInfo: {
           udf1: customerName,
