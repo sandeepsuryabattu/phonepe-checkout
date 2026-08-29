@@ -13,19 +13,19 @@ export default async function handler(req, res) {
   try {
     const { name, email, mobile, amount } = req.body || {};
 
-    if (!name || !email || !mobile || !amount) {
-      return res.status(400).json({ error: 'Missing required fields: name, email, mobile, amount' });
-    }
-
-    if (Number(amount) < 100) {
+    if (!amount || Number(amount) < 100) {
       return res.status(400).json({ error: 'Minimum amount is ₹1 (100 paise)' });
     }
+
+    const customerName = (name && name.trim()) || 'Guest Customer';
+    const customerEmail = (email && email.trim()) || 'customer@cissberry.com';
+    const customerMobile = (mobile && mobile.trim()) || '9999999999';
 
     const host = req.headers['x-forwarded-host'] || req.headers.host;
     const proto = req.headers['x-forwarded-proto'] || 'https';
     const frontendUrl = process.env.FRONTEND_URL || `${proto}://${host}`;
     const merchantTransactionId = `TXN_${Date.now()}_${crypto.randomBytes(4).toString('hex')}`;
-    const redirectUrl = `${frontendUrl}/payment-status?txnId=${merchantTransactionId}`;
+    const redirectUrl = `${frontendUrl}/?txnId=${merchantTransactionId}`;
     const isProd = process.env.PHONEPE_ENV === 'production' || process.env.NODE_ENV === 'production';
 
     // ==========================================
@@ -48,9 +48,9 @@ export default async function handler(req, res) {
           },
         },
         metaInfo: {
-          udf1: name,
-          udf2: email,
-          udf3: mobile,
+          udf1: customerName,
+          udf2: customerEmail,
+          udf3: customerMobile,
         },
       };
 
@@ -87,7 +87,7 @@ export default async function handler(req, res) {
     const saltKey = process.env.PHONEPE_SALT_KEY || '96434309-7796-489d-8924-ab56988a6076';
     const saltIndex = process.env.PHONEPE_SALT_INDEX || '1';
     const apiUrl = process.env.PHONEPE_API_URL || 'https://api-preprod.phonepe.com/apis/pg-sandbox';
-    const merchantUserId = `USER_${crypto.createHash('md5').update(email).digest('hex').slice(0, 12)}`;
+    const merchantUserId = `USER_${crypto.createHash('md5').update(customerEmail).digest('hex').slice(0, 12)}`;
 
     const v1Payload = {
       merchantId,
@@ -97,7 +97,7 @@ export default async function handler(req, res) {
       redirectUrl,
       redirectMode: 'REDIRECT',
       callbackUrl: `${frontendUrl}/api/payment-callback`,
-      mobileNumber: mobile,
+      mobileNumber: customerMobile,
       paymentInstrument: {
         type: 'PAY_PAGE',
       },

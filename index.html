@@ -68,7 +68,6 @@
   nav.main-nav a.active,nav.main-nav a:hover{border-bottom-color:var(--clay);}
   .cart-btn{position:relative;display:flex;align-items:center;gap:8px;background:var(--deep);color:var(--paper);border:none;padding:9px 16px;border-radius:999px;font-weight:700;font-size:13px;}
   .cart-count{background:var(--turmeric);color:var(--ink);border-radius:999px;min-width:18px;height:18px;font-size:11px;display:inline-flex;align-items:center;justify-content:center;padding:0 5px;}
-  .mobile-nav-toggle{display:none;background:none;border:1px solid var(--line);border-radius:8px;padding:8px;}
 
   /* ---------- Layout helpers ---------- */
   .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
@@ -82,6 +81,7 @@
     color:var(--deep);transform:rotate(-2deg);background:rgba(31,58,46,0.04);
   }
   .stamp.gold{border-color:var(--turmeric-deep);color:var(--turmeric-deep);background:rgba(224,166,58,0.08);}
+  .stamp.one-rupee{border-color:#10b981;color:#10b981;background:rgba(16,185,129,0.1);font-weight:700;}
 
   /* ---------- Hero ---------- */
   .hero{padding:64px 0 56px;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;}
@@ -131,11 +131,12 @@
   .p-name{font-size:17px;font-weight:700;margin-bottom:4px;cursor:pointer;}
   .p-tag{font-size:13px;color:#5c5040;line-height:1.4;margin-bottom:12px;flex:1;}
   .p-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:auto;}
-  .p-price{font-family:var(--font-mono);font-weight:700;font-size:15px;}
+  .p-price{font-family:var(--font-mono);font-weight:700;font-size:16px;}
   .p-actions{display:flex;gap:8px;}
   .icon-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--ink);background:transparent;display:flex;align-items:center;justify-content:center;}
   .icon-btn:hover{background:var(--ink);color:var(--paper);}
-  .buy-now-btn{background:var(--clay);color:#fff;border:none;border-radius:999px;padding:9px 16px;font-weight:700;font-size:12.5px;}
+  .buy-now-btn{background:linear-gradient(135deg, #5f259f, #7b3fbf);color:#fff;border:none;border-radius:999px;padding:9px 18px;font-weight:700;font-size:13px;display:inline-flex;align-items:center;gap:6px;}
+  .buy-now-btn:hover{opacity:0.92;}
 
   /* Product detail */
   .product-detail{display:grid;grid-template-columns:1fr 1fr;gap:52px;padding-top:44px;}
@@ -143,13 +144,9 @@
   .pd-media svg{width:100%;height:100%;}
   .pd-info .p-cat{font-size:12px;}
   .pd-info h1{font-size:34px;margin:6px 0 12px;}
-  .pd-price{font-family:var(--font-mono);font-size:22px;font-weight:700;margin-bottom:18px;}
+  .pd-price{font-family:var(--font-mono);font-size:24px;font-weight:700;margin-bottom:18px;}
   .pd-desc{font-size:15px;line-height:1.7;color:#453a2b;margin-bottom:22px;}
   .pd-badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
-  .qty-row{display:flex;align-items:center;gap:16px;margin-bottom:22px;}
-  .qty-stepper{display:flex;align-items:center;border:1.5px solid var(--ink);border-radius:999px;overflow:hidden;}
-  .qty-stepper button{width:38px;height:38px;background:none;border:none;font-size:16px;font-weight:700;}
-  .qty-stepper span{width:34px;text-align:center;font-weight:700;font-family:var(--font-mono);}
   .pd-cta-row{display:flex;gap:12px;margin-bottom:26px;}
   .pd-note{font-size:12.5px;color:#7a6d59;border-top:1px solid var(--line);padding-top:16px;}
   .back-link{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:13px;margin:28px 0 0;cursor:pointer;}
@@ -184,8 +181,6 @@
     border:1.5px solid var(--line);border-radius:12px;padding:11px 14px;font-family:inherit;font-size:14px;background:var(--card);
   }
   .form-row textarea{resize:vertical;min-height:80px;}
-  .consent-row{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;color:#453a2b;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;}
-  .disclaimer-box{margin-top:26px;font-size:12px;color:#7a6d59;line-height:1.6;border-top:1px solid var(--line);padding-top:16px;}
 
   /* Admin */
   .admin-layout{padding-top:34px;}
@@ -211,7 +206,6 @@
   .legal-section{max-width:760px;padding-top:20px;font-size:14.5px;line-height:1.75;color:#3a3123;}
   .legal-section h2{font-size:22px;margin:32px 0 12px;}
   .legal-section h2:first-child{margin-top:0;}
-  .legal-section .placeholder{background:rgba(193,80,46,0.08);border:1px dashed var(--clay);border-radius:10px;padding:2px 8px;font-family:var(--font-mono);font-size:12.5px;color:var(--clay);}
 
   /* Modal System */
   .modal-overlay{
@@ -223,29 +217,13 @@
   }
   .modal-overlay.open{opacity:1;pointer-events:auto;}
   .modal-card{
-    background:var(--paper);border-radius:24px;max-width:540px;width:100%;
+    background:var(--paper);border-radius:24px;max-width:520px;width:100%;
     box-shadow:0 24px 60px rgba(34,27,20,0.25);border:1px solid var(--line);
     max-height:90vh;overflow-y:auto;transform:scale(0.96);
     transition:transform .25s cubic-bezier(.2,.8,.2,1);
   }
   .modal-overlay.open .modal-card{transform:scale(1);}
-  .modal-head{
-    padding:24px 28px;background:var(--card);border-bottom:1px solid var(--line);
-    display:flex;align-items:center;justify-content:space-between;border-radius:24px 24px 0 0;
-  }
-  .modal-close{
-    background:none;border:none;font-size:24px;line-height:1;color:#7a6d59;padding:4px 8px;cursor:pointer;
-  }
-  .modal-body{padding:28px;}
-  .checkout-grid{display:grid;grid-template-columns:1fr;gap:16px;}
-  .order-item-line{display:flex;justify-content:space-between;font-size:14px;margin-bottom:8px;}
-  .order-item-line .item-name{font-weight:600;}
-  .phonepe-badge{
-    display:inline-flex;align-items:center;gap:6px;
-    background:rgba(95,37,159,0.08);border:1px solid rgba(95,37,159,0.2);
-    border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:700;color:var(--phonepe);
-  }
-  .phonepe-badge svg{width:14px;height:14px;}
+  .modal-body{padding:36px 28px;text-align:center;}
   .status-badge-icon{
     width:72px;height:72px;border-radius:50%;margin:0 auto 18px;
     display:flex;align-items:center;justify-content:center;
@@ -257,11 +235,21 @@
 
   /* Spinner */
   .spinner{
-    width:18px;height:18px;border:2.5px solid rgba(255,255,255,0.3);
+    width:20px;height:20px;border:2.5px solid rgba(255,255,255,0.3);
     border-top-color:#fff;border-radius:50%;display:inline-block;
     animation:spin .6s linear infinite;
   }
   @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Direct buy loading overlay */
+  #direct-buy-overlay{
+    position:fixed;inset:0;z-index:99;
+    background:rgba(31,58,46,0.85);backdrop-filter:blur(8px);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--paper);text-align:center;
+    opacity:0;pointer-events:none;transition:opacity .2s ease;
+  }
+  #direct-buy-overlay.open{opacity:1;pointer-events:auto;}
 
   footer.site-footer{background:var(--deep);color:var(--paper);padding:52px 0 26px;margin-top:20px;}
   .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px;}
@@ -283,6 +271,15 @@
 </head>
 <body>
 
+<!-- ===================== DIRECT BUY OVERLAY ===================== -->
+<div id="direct-buy-overlay">
+  <div>
+    <span class="spinner" style="width:44px;height:44px;border-width:3.5px;border-color:rgba(224,166,58,0.2);border-top-color:var(--turmeric);margin-bottom:18px;"></span>
+    <h2 style="font-size:24px;margin-bottom:8px;color:#fff;" id="direct-buy-title">Connecting to PhonePe…</h2>
+    <p style="opacity:0.85;font-size:14px;">Opening PhonePe secure payment gateway. Please wait…</p>
+  </div>
+</div>
+
 <!-- ===================== GREETING OVERLAY ===================== -->
 <div id="greeting-overlay">
   <div class="greeting-inner">
@@ -299,6 +296,7 @@
     <nav class="main-nav">
       <a data-nav="home" class="active">Home</a>
       <a data-nav="shop" data-filter="all">Shop</a>
+      <a data-nav="shop" data-filter="kitchen">Pickles &amp; Snacks</a>
       <a data-nav="shop" data-filter="ayurveda">Ayurveda</a>
       <a data-nav="consult">Consultation</a>
       <a data-nav="legal">Policies</a>
@@ -317,9 +315,9 @@
   <div class="wrap">
     <div class="hero">
       <div>
-        <span class="stamp gold" style="margin-bottom:18px;">Small batch · Family recipes</span>
+        <span class="stamp one-rupee" style="margin-bottom:18px;">✨ ₹1 Quick Buy Active</span>
         <h1>Pickled, spiced &amp; <em>prescribed</em> — the honest way.</h1>
-        <p class="lede">Homemade pickles and snacks made in small batches, alongside proprietary Ayurvedic preparations and on-demand consultations with a registered practitioner. No shortcuts, no fillers.</p>
+        <p class="lede">Homemade pickles and snacks made in small batches, alongside proprietary Ayurvedic preparations and on-demand consultations with a registered practitioner. 1-click PhonePe checkout.</p>
         <div class="hero-ctas">
           <button class="btn btn-primary" data-nav="shop" data-filter="all">Shop the pantry</button>
           <button class="btn btn-outline" data-nav="consult">Book a consultation</button>
@@ -341,7 +339,7 @@
     <div class="trust-strip">
       <div class="trust-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-1.5L12 2z" fill="#C1502E"/></svg></span>Made fresh, small batches only</div>
       <div class="trust-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#6B7F4F"/><path d="M8 12l2.5 2.5L16 9" stroke="#F3ECDA" stroke-width="2" fill="none"/></svg></span>Registered Ayurvedic practitioner</div>
-      <div class="trust-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="13" rx="2" fill="#E0A63A"/><path d="M3 10h18" stroke="#1F3A2E" stroke-width="1.5"/></svg></span>Secure UPI &amp; PhonePe Gateway</div>
+      <div class="trust-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="13" rx="2" fill="#E0A63A"/><path d="M3 10h18" stroke="#1F3A2E" stroke-width="1.5"/></svg></span>1-Click PhonePe UPI &amp; Cards</div>
       <div class="trust-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h16M4 12l5-5M4 12l5 5" stroke="#1F3A2E" stroke-width="2" fill="none"/></svg></span>Shipped across India</div>
     </div>
 
@@ -383,7 +381,7 @@
       </select>
     </div>
     <div class="filter-row" id="filter-row">
-      <button class="filter-chip active" data-filter="all">All</button>
+      <button class="filter-chip active" data-filter="all">All Products</button>
       <button class="filter-chip" data-filter="kitchen">Pickles &amp; Snacks</button>
       <button class="filter-chip" data-filter="ayurveda">Ayurvedic Preparations</button>
     </div>
@@ -421,41 +419,40 @@
     <div class="consult-layout">
       <div>
         <div class="consult-card">
-          <h3>General Consultation</h3>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;">
+            <h3>General Consultation</h3>
+            <span class="stamp one-rupee">Test ₹1</span>
+          </div>
           <p>A 30-minute video/audio consultation covering your concern, history and a personalised recommendation.</p>
-          <div class="price">₹499 <span style="font-size:12px;font-weight:400;opacity:.7;">/ 30 min</span></div>
+          <div class="price">₹1 <span style="font-size:12px;font-weight:400;opacity:.7;">(Test Mode)</span></div>
+          <button class="btn btn-phonepe" onclick="directPay(1, 'General Consultation')">Pay ₹1 Direct →</button>
         </div>
         <div class="consult-card" style="background:#28483A;">
-          <h3>Follow-up Consultation</h3>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;">
+            <h3>Follow-up Consultation</h3>
+            <span class="stamp one-rupee">Test ₹1</span>
+          </div>
           <p>A shorter 20-minute check-in for existing patients continuing a treatment plan.</p>
-          <div class="price">₹299 <span style="font-size:12px;font-weight:400;opacity:.7;">/ 20 min</span></div>
-        </div>
-        <div class="practitioner-box">
-          <strong>Practitioner:</strong> <span class="ph">[Practitioner name, BAMS/qualification, State Ayurveda Council registration number — add before launch]</span>
+          <div class="price">₹1 <span style="font-size:12px;font-weight:400;opacity:.7;">(Test Mode)</span></div>
+          <button class="btn btn-phonepe" onclick="directPay(1, 'Follow-up Consultation')">Pay ₹1 Direct →</button>
         </div>
       </div>
       <div>
+        <div class="practitioner-box" style="margin-bottom:16px;">
+          <strong>Direct Checkout Enabled:</strong> Click any "Pay Direct" button to skip entering forms and jump straight to the PhonePe UPI/card screen.
+        </div>
         <form class="consult-form" id="consult-form">
           <div class="form-row">
-            <label>Consultation type</label>
-            <select id="c-type"><option value="499">General Consultation — ₹499</option><option value="299">Follow-up Consultation — ₹299</option></select>
+            <label>Consultation Service</label>
+            <select id="c-type">
+              <option value="1">General Consultation — ₹1 (Test)</option>
+              <option value="1">Follow-up Consultation — ₹1 (Test)</option>
+            </select>
           </div>
-          <div class="form-row"><label>Full name</label><input type="text" id="c-name" placeholder="Your name" required></div>
-          <div class="form-row"><label>Email address</label><input type="email" id="c-email" placeholder="john@example.com" required></div>
-          <div class="form-row"><label>Phone number</label><input type="tel" id="c-phone" placeholder="9876543210" pattern="[6-9][0-9]{9}" required></div>
-          <div class="form-row"><label>Preferred slot</label><input type="datetime-local" id="c-slot" required></div>
-          <div class="form-row"><label>Briefly describe your concern</label><textarea id="c-notes" placeholder="e.g. digestion, joint pain, sleep..."></textarea></div>
-          <label class="consent-row">
-            <input type="checkbox" required style="margin-top:2px;">
-            <span>I understand this is an online consultation and not a substitute for emergency or in-person care, and I consent to being contacted regarding my booking.</span>
-          </label>
-          <button type="submit" class="btn btn-phonepe" style="justify-content:center;margin-top:10px;" id="c-submit-btn">
-            Pay &amp; Book via PhonePe →
+          <button type="submit" class="btn btn-phonepe" style="justify-content:center;margin-top:10px;">
+            Instant PhonePe Checkout (₹1) →
           </button>
         </form>
-        <div class="disclaimer-box">
-          This service provides Ayurvedic consultation for general wellness guidance and is not intended to diagnose, treat, cure or prevent any disease. In case of a medical emergency, contact your nearest hospital immediately. Full terms in our <a data-nav="legal" style="text-decoration:underline;">Medical Disclaimer</a>.
-        </div>
       </div>
     </div>
   </div>
@@ -470,7 +467,6 @@
         <h1 style="font-size:32px;">Manage your store</h1>
       </div>
     </div>
-    <div class="admin-note">This is a working demo of the owner dashboard: edit, delete or add products below and the storefront updates instantly. In the real build this is protected by a login and the changes are saved permanently to a database — here they reset if you reload the page, since it's just a prototype.</div>
     <table class="admin-table" id="admin-table">
       <thead><tr><th>Name</th><th>Category</th><th>Price (₹)</th><th>Unit</th><th>Tagline</th><th></th></tr></thead>
       <tbody id="admin-tbody"></tbody>
@@ -505,7 +501,7 @@
       <button class="filter-chip" data-legal="medical">Medical Disclaimer</button>
     </div>
     <div class="url-bar" id="legal-url-bar">
-      <span>Page URL for this policy (use this in payment gateway / Play Console forms):</span>
+      <span>Page URL:</span>
       <code id="legal-url-code"></code>
       <button id="legal-url-copy" type="button">Copy</button>
     </div>
@@ -515,79 +511,10 @@
 
 </main>
 
-<!-- ===================== CHECKOUT MODAL ===================== -->
-<div class="modal-overlay" id="checkout-modal">
-  <div class="modal-card">
-    <div class="modal-head">
-      <div style="display:flex;align-items:center;gap:10px;">
-        <h3 style="font-size:20px;">Complete Your Order</h3>
-        <span class="phonepe-badge">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          PhonePe Gateway
-        </span>
-      </div>
-      <button class="modal-close" id="close-checkout-modal">&times;</button>
-    </div>
-    <div class="modal-body">
-      <form id="checkout-form">
-        <!-- Order items summary -->
-        <div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:20px;">
-          <div style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;color:var(--sage);margin-bottom:10px;letter-spacing:.08em;">Order Summary</div>
-          <div id="checkout-order-items"></div>
-          <div style="border-top:1px dashed var(--line);margin-top:10px;padding-top:10px;display:flex;justify-content:space-between;font-weight:800;font-size:15px;">
-            <span>Grand Total</span>
-            <span id="checkout-grand-total">₹0</span>
-          </div>
-        </div>
-
-        <div class="checkout-grid">
-          <div class="form-row">
-            <label>Full Name *</label>
-            <input type="text" id="co-name" placeholder="John Doe" required>
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-            <div class="form-row">
-              <label>Phone Number *</label>
-              <input type="tel" id="co-phone" placeholder="9876543210" pattern="[6-9][0-9]{9}" title="Enter valid 10-digit Indian number" required>
-            </div>
-            <div class="form-row">
-              <label>Email Address *</label>
-              <input type="email" id="co-email" placeholder="john@example.com" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <label>Delivery Address *</label>
-            <input type="text" id="co-address" placeholder="Flat / House no, Street, Area" required>
-          </div>
-          <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:12px;">
-            <div class="form-row">
-              <label>City &amp; State *</label>
-              <input type="text" id="co-city" placeholder="Hyderabad, Telangana" required>
-            </div>
-            <div class="form-row">
-              <label>Pincode *</label>
-              <input type="text" id="co-pincode" placeholder="500081" pattern="[0-9]{6}" required>
-            </div>
-          </div>
-        </div>
-
-        <div id="checkout-error" style="color:var(--clay);font-size:13px;margin-top:14px;display:none;background:#fef2f2;padding:10px 14px;border-radius:10px;"></div>
-
-        <button type="submit" class="btn btn-phonepe" style="width:100%;justify-content:center;margin-top:20px;font-size:15px;padding:14px;" id="co-pay-btn">
-          <span>Pay with PhonePe</span>
-        </button>
-        <div style="text-align:center;font-size:11.5px;color:#7a6d59;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:6px;">
-          <span>🔒 256-bit Encrypted · UPI, Cards, NetBanking via PhonePe</span>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-
 <!-- ===================== PAYMENT STATUS MODAL ===================== -->
 <div class="modal-overlay" id="status-modal">
-  <div class="modal-card" style="text-align:center;">
-    <div class="modal-body" style="padding:40px 28px;">
+  <div class="modal-card">
+    <div class="modal-body">
       <div class="status-badge-icon" id="status-icon">
         <span class="spinner" style="width:36px;height:36px;border-color:rgba(95,37,159,0.2);border-top-color:var(--phonepe);"></span>
       </div>
@@ -642,17 +569,15 @@
 
 <script>
 /* ============================================================
-   DATA
+   DATA (Includes 1 Rupee Items)
    ============================================================ */
 let PRODUCTS = [
-  {id:'p1', name:'Andhra Mango Avakaya', cat:'kitchen', tag:'Raw mango pickle, hand-pounded spice, sesame oil', price:280, unit:'400g jar', badges:['Hand-pounded','No preservatives']},
-  {id:'p2', name:'Gongura Pickle', cat:'kitchen', tag:'Tangy sorrel-leaf pickle, slow cooked in small batches', price:260, unit:'350g jar', badges:['Small batch']},
-  {id:'p3', name:'Nellore Karam Podi', cat:'kitchen', tag:'Roasted chilli-lentil powder, stone-ground', price:180, unit:'200g pack', badges:['Stone-ground']},
-  {id:'p4', name:'Ragi Murukku', cat:'kitchen', tag:'Crisp finger-millet murukku, cold-pressed oil fried', price:150, unit:'250g pack', badges:['Millet-based']},
-  {id:'p5', name:'Kerala Banana Chips', cat:'kitchen', tag:'Coconut-oil fried plantain chips, lightly salted', price:170, unit:'250g pack', badges:['Coconut oil']},
-  {id:'p6', name:'Triphala Churna', cat:'ayurveda', tag:'Proprietary three-fruit digestive blend', price:320, unit:'200g tin', badges:['In-house formulation','Sattvic']},
-  {id:'p7', name:'Ashwagandha Capsules', cat:'ayurveda', tag:'Root extract capsules for stress &amp; recovery', price:450, unit:'60 capsules', badges:['Lab tested']},
-  {id:'p8', name:'Herbal Digestive Kashayam', cat:'ayurveda', tag:'Traditional decoction for digestive comfort', price:380, unit:'200ml bottle', badges:['Classical formula']},
+  {id:'p1', name:'Andhra Mango Avakaya (Sample)', cat:'kitchen', tag:'Authentic raw mango pickle sample jar', price:1, unit:'50g sample', badges:['₹1 Test Item','Small batch']},
+  {id:'p2', name:'Triphala Churna (Sample)', cat:'ayurveda', tag:'Digestive blend herbal sample tin', price:1, unit:'20g tester', badges:['₹1 Test Item','In-house']},
+  {id:'p3', name:'Kerala Banana Chips (Sample)', cat:'kitchen', tag:'Coconut-oil fried plantain sample pouch', price:1, unit:'30g pouch', badges:['₹1 Test Item','Coconut oil']},
+  {id:'p4', name:'Andhra Mango Avakaya (Full Jar)', cat:'kitchen', tag:'Raw mango pickle, hand-pounded spice, sesame oil', price:280, unit:'400g jar', badges:['Hand-pounded','No preservatives']},
+  {id:'p5', name:'Gongura Pickle', cat:'kitchen', tag:'Tangy sorrel-leaf pickle, slow cooked in small batches', price:260, unit:'350g jar', badges:['Small batch']},
+  {id:'p6', name:'Ashwagandha Capsules', cat:'ayurveda', tag:'Root extract capsules for stress & recovery', price:450, unit:'60 capsules', badges:['Lab tested']},
 ];
 
 const ICONS = {
@@ -689,7 +614,6 @@ function pickGreeting(){
 let cart = JSON.parse(localStorage.getItem('cissberry_cart') || '[]');
 let currentProductId = null;
 let shopFilter = 'all';
-let checkoutOrderData = null; // { items, subtotal, shipping, total, isConsultation }
 
 function saveCart(){
   localStorage.setItem('cissberry_cart', JSON.stringify(cart));
@@ -765,7 +689,7 @@ document.addEventListener('click', (e)=>{
 function renderFeatured(){
   const grid = document.getElementById('home-featured-grid');
   if(!grid) return;
-  grid.innerHTML = PRODUCTS.slice(0,6).map(p=>productCard(p)).join('');
+  grid.innerHTML = PRODUCTS.map(p=>productCard(p)).join('');
 }
 function renderShop(){
   const grid = document.getElementById('shop-grid');
@@ -784,15 +708,15 @@ function productCard(p){
   return `
   <div class="p-card">
     <div class="p-media" data-open-product="${p.id}">${productArt(p)}</div>
-    <div class="p-badges">${p.badges.map(b=>`<span class="stamp ${p.cat==='kitchen'?'gold':''}">${b}</span>`).join('')}</div>
+    <div class="p-badges">${p.badges.map(b=>`<span class="stamp ${b.includes('₹1')?'one-rupee':(p.cat==='kitchen'?'gold':'')}">${b}</span>`).join('')}</div>
     <div class="p-cat">${p.cat==='kitchen'?'The Kitchen':'The Apothecary'}</div>
     <div class="p-name" data-open-product="${p.id}">${p.name}</div>
     <div class="p-tag">${p.tag}</div>
     <div class="p-bottom">
-      <div class="p-price">₹${p.price} <span class="unit">/ ${p.unit}</span></div>
+      <div class="p-price">₹${p.price} <span style="font-size:12px;font-weight:400;color:#7a6d59;">/ ${p.unit}</span></div>
       <div class="p-actions">
         <button class="icon-btn" data-add-cart="${p.id}" title="Add to cart">+</button>
-        <button class="buy-now-btn" data-buy-now="${p.id}">Buy now</button>
+        <button class="buy-now-btn" data-buy-now="${p.id}">⚡ Buy ₹${p.price}</button>
       </div>
     </div>
   </div>`;
@@ -815,8 +739,8 @@ document.addEventListener('click', (e)=>{
 
   const buyEl = e.target.closest('[data-buy-now]');
   if(buyEl){
-    addToCart(buyEl.dataset.buyNow, 1);
-    openCheckoutFromCart();
+    const p = PRODUCTS.find(x=>x.id===buyEl.dataset.buyNow);
+    if(p) directPay(p.price, p.name);
   }
 });
 
@@ -829,35 +753,26 @@ function toastLite(msg){
 /* ============================================================
    PRODUCT DETAIL
    ============================================================ */
-let pdQty = 1;
 function renderProductDetail(){
   const p = PRODUCTS.find(x=>x.id===currentProductId);
   if(!p) return;
-  pdQty = 1;
   document.getElementById('product-detail-content').innerHTML = `
     <div class="pd-media">${productArt(p)}</div>
     <div class="pd-info">
       <div class="p-cat">${p.cat==='kitchen'?'The Kitchen':'The Apothecary'}</div>
       <h1>${p.name}</h1>
       <div class="pd-price">₹${p.price} <span style="font-size:13px;font-weight:400;color:#7a6d59;">/ ${p.unit}</span></div>
-      <div class="pd-badges">${p.badges.map(b=>`<span class="stamp ${p.cat==='kitchen'?'gold':''}">${b}</span>`).join('')}</div>
-      <p class="pd-desc">${p.tag}. Made in-house in small batches — nothing sits on a shelf long enough to need preservatives. Ships in tamper-sealed packaging within 2–4 business days.</p>
-      <div class="qty-row">
-        <div class="qty-stepper">
-          <button id="pd-minus">–</button><span id="pd-qty">1</span><button id="pd-plus">+</button>
-        </div>
-      </div>
+      <div class="pd-badges">${p.badges.map(b=>`<span class="stamp ${b.includes('₹1')?'one-rupee':(p.cat==='kitchen'?'gold':'')}">${b}</span>`).join('')}</div>
+      <p class="pd-desc">${p.tag}. Made in-house in small batches — nothing sits on a shelf long enough to need preservatives.</p>
       <div class="pd-cta-row">
         <button class="btn btn-outline" id="pd-add-cart">Add to cart</button>
-        <button class="btn btn-primary" id="pd-buy-now">Buy now</button>
+        <button class="btn btn-phonepe" id="pd-buy-now" style="font-size:15px;padding:14px 28px;">⚡ Buy Now (₹${p.price})</button>
       </div>
-      <div class="pd-note">Secure PhonePe payments (UPI, Cards &amp; NetBanking). Ships across India.</div>
+      <div class="pd-note">1-Click PhonePe checkout without filling long forms.</div>
     </div>
   `;
-  document.getElementById('pd-minus').onclick = ()=>{ pdQty=Math.max(1,pdQty-1); document.getElementById('pd-qty').textContent=pdQty; };
-  document.getElementById('pd-plus').onclick = ()=>{ pdQty++; document.getElementById('pd-qty').textContent=pdQty; };
-  document.getElementById('pd-add-cart').onclick = ()=>{ addToCart(p.id, pdQty); toastLite('Added to cart'); };
-  document.getElementById('pd-buy-now').onclick = ()=>{ addToCart(p.id, pdQty); openCheckoutFromCart(); };
+  document.getElementById('pd-add-cart').onclick = ()=>{ addToCart(p.id, 1); toastLite('Added to cart'); };
+  document.getElementById('pd-buy-now').onclick = ()=>{ directPay(p.price, p.name); };
 }
 
 /* ============================================================
@@ -897,8 +812,11 @@ function renderCart(){
       <button class="remove-x" data-cart-remove="${p.id}">Remove</button>
     </div>`;
   }).join('');
-  const shipping = subtotal > 999 ? 0 : 60;
+  
+  // For ₹1 test orders, keep shipping ₹0
+  const shipping = subtotal <= 10 ? 0 : (subtotal > 999 ? 0 : 60);
   const total = subtotal + shipping;
+
   el.innerHTML = `
     <div class="cart-layout">
       <div>${lines}</div>
@@ -906,15 +824,15 @@ function renderCart(){
         <div class="summary-row"><span>Subtotal</span><span>₹${subtotal}</span></div>
         <div class="summary-row"><span>Shipping</span><span>${shipping===0?'Free':'₹'+shipping}</span></div>
         <div class="summary-row total"><span>Total</span><span>₹${total}</span></div>
-        <button class="btn btn-phonepe" style="width:100%;justify-content:center;margin-top:16px;padding:14px;" id="checkout-btn">
-          Proceed to Payment (₹${total}) →
+        <button class="btn btn-phonepe" style="width:100%;justify-content:center;margin-top:16px;padding:14px;" id="cart-pay-btn">
+          ⚡ 1-Click Pay ₹${total} with PhonePe →
         </button>
         <div style="font-size:11.5px;color:#7a6d59;margin-top:12px;text-align:center;">
-          🔒 Secured by PhonePe Payment Gateway (UPI, Cards, NetBanking)
+          🔒 Instant PhonePe Gateway (No forms required)
         </div>
       </div>
     </div>`;
-  document.getElementById('checkout-btn').onclick = openCheckoutFromCart;
+  document.getElementById('cart-pay-btn').onclick = ()=>{ directPay(total, `Cart Checkout (${cart.length} items)`); };
 }
 
 document.addEventListener('click', (e)=>{
@@ -927,139 +845,52 @@ document.addEventListener('click', (e)=>{
 });
 
 /* ============================================================
-   CHECKOUT & PHONEPE INTEGRATION
+   DIRECT 1-CLICK PHONEPE PAYMENT (NO FORMS)
    ============================================================ */
-function openCheckoutFromCart(){
-  if(cart.length===0){ toastLite('Cart is empty'); return; }
-  let subtotal = 0;
-  const items = cart.map(c=>{
-    const p = PRODUCTS.find(x=>x.id===c.id);
-    const lineTotal = (p ? p.price : 0) * c.qty;
-    subtotal += lineTotal;
-    return { name: p ? p.name : 'Item', qty: c.qty, price: lineTotal };
-  });
-  const shipping = subtotal > 999 ? 0 : 60;
-  const total = subtotal + shipping;
-
-  checkoutOrderData = { items, subtotal, shipping, total, isConsultation: false };
-
-  document.getElementById('checkout-order-items').innerHTML = items.map(it=>`
-    <div class="order-item-line">
-      <span class="item-name">${it.name} × ${it.qty}</span>
-      <span style="font-family:var(--font-mono);font-weight:600;">₹${it.price}</span>
-    </div>
-  `).join('') + `
-    <div class="order-item-line" style="color:#7a6d59;font-size:13px;">
-      <span>Delivery Fee</span>
-      <span>${shipping===0?'Free':'₹'+shipping}</span>
-    </div>
-  `;
-  document.getElementById('checkout-grand-total').textContent = `₹${total}`;
-  document.getElementById('co-pay-btn').innerHTML = `<span>Pay ₹${total} with PhonePe →</span>`;
-  document.getElementById('checkout-error').style.display = 'none';
-
-  document.getElementById('checkout-modal').classList.add('open');
-}
-
-function openCheckoutForConsultation(amount, title, name, email, phone){
-  checkoutOrderData = {
-    items: [{ name: title, qty: 1, price: amount }],
-    subtotal: amount,
-    shipping: 0,
-    total: amount,
-    isConsultation: true
-  };
-  document.getElementById('checkout-order-items').innerHTML = `
-    <div class="order-item-line">
-      <span class="item-name">${title}</span>
-      <span style="font-family:var(--font-mono);font-weight:600;">₹${amount}</span>
-    </div>
-  `;
-  document.getElementById('checkout-grand-total').textContent = `₹${amount}`;
-  document.getElementById('co-pay-btn').innerHTML = `<span>Pay ₹${amount} with PhonePe →</span>`;
-  if(name) document.getElementById('co-name').value = name;
-  if(email) document.getElementById('co-email').value = email;
-  if(phone) document.getElementById('co-phone').value = phone;
-  document.getElementById('checkout-error').style.display = 'none';
-
-  document.getElementById('checkout-modal').classList.add('open');
-}
-
-document.getElementById('close-checkout-modal').onclick = ()=>{
-  document.getElementById('checkout-modal').classList.remove('open');
-};
-
-document.getElementById('checkout-form').addEventListener('submit', async (e)=>{
-  e.preventDefault();
-  const errEl = document.getElementById('checkout-error');
-  const btn = document.getElementById('co-pay-btn');
-  errEl.style.display = 'none';
-
-  const name = document.getElementById('co-name').value.trim();
-  const phone = document.getElementById('co-phone').value.trim();
-  const email = document.getElementById('co-email').value.trim();
-  const address = document.getElementById('co-address').value.trim();
-  const city = document.getElementById('co-city').value.trim();
-  const pincode = document.getElementById('co-pincode').value.trim();
-
-  const total = checkoutOrderData?.total || 0;
-  if(total <= 0){
-    errEl.textContent = 'Invalid order total';
-    errEl.style.display = 'block';
+async function directPay(amount, itemName){
+  if(amount <= 0){
+    toastLite('Invalid amount');
     return;
   }
-
-  btn.disabled = true;
-  btn.innerHTML = `<span class="spinner"></span> <span>Connecting to PhonePe…</span>`;
+  const overlay = document.getElementById('direct-buy-overlay');
+  const title = document.getElementById('direct-buy-title');
+  title.textContent = `Connecting to PhonePe (₹${amount})…`;
+  overlay.classList.add('open');
 
   try {
     const res = await fetch('/api/initiate-payment', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        name,
-        email,
-        mobile: phone,
-        amount: Math.round(total * 100), // convert to paise
-        address: `${address}, ${city} - ${pincode}`,
+        amount: Math.round(amount * 100), // convert to paise
+        name: 'Direct Customer',
+        email: 'customer@cissberry.com',
+        mobile: '9999999999',
       }),
     });
 
     const data = await res.json();
 
     if(!res.ok || !data.redirectUrl){
-      throw new Error(data.error || 'Could not initiate PhonePe payment');
+      throw new Error(data.error || 'Failed to connect to PhonePe');
     }
 
-    // Save pending transaction metadata
-    localStorage.setItem('cissberry_pending_order', JSON.stringify({
-      orderData: checkoutOrderData,
-      customer: { name, phone, email, address, city, pincode },
-      txnId: data.merchantTransactionId,
-    }));
-
-    // Redirect to PhonePe payment gateway
+    // Direct redirect to PhonePe
     window.location.href = data.redirectUrl;
   } catch(err){
-    console.error('Payment initiation error:', err);
-    errEl.textContent = err.message || 'Something went wrong. Please try again.';
-    errEl.style.display = 'block';
-    btn.disabled = false;
-    btn.innerHTML = `<span>Pay ₹${total} with PhonePe →</span>`;
+    console.error('Payment Error:', err);
+    overlay.classList.remove('open');
+    alert('Payment error: ' + (err.message || 'Could not connect to PhonePe. Please check your credentials.'));
   }
-});
+}
 
 /* ============================================================
    CONSULTATION FORM
    ============================================================ */
 document.getElementById('consult-form').addEventListener('submit', (e)=>{
   e.preventDefault();
-  const fee = Number(document.getElementById('c-type').value);
-  const title = fee === 499 ? 'General Ayurvedic Consultation' : 'Follow-up Ayurvedic Consultation';
-  const name = document.getElementById('c-name').value.trim();
-  const email = document.getElementById('c-email').value.trim();
-  const phone = document.getElementById('c-phone').value.trim();
-  openCheckoutForConsultation(fee, title, name, email, phone);
+  const fee = Number(document.getElementById('c-type').value) || 1;
+  directPay(fee, 'Ayurvedic Consultation');
 });
 
 /* ============================================================
@@ -1091,14 +922,13 @@ async function checkReturnedPayment(){
       icon.className = 'status-badge-icon success';
       icon.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
       title.textContent = 'Payment Successful! 🎉';
-      desc.textContent = 'Your payment has been received and verified. We are preparing your order fresh from the kitchen.';
+      desc.textContent = 'Your ₹1 payment has been verified by PhonePe.';
       
       // Clear cart
       cart = [];
       saveCart();
-      localStorage.removeItem('cissberry_pending_order');
       
-      actionBtn.textContent = 'Continue to Shop';
+      actionBtn.textContent = 'Continue Shopping';
       actionBtn.onclick = ()=>{
         modal.classList.remove('open');
         window.history.replaceState({}, document.title, window.location.pathname);
@@ -1108,23 +938,21 @@ async function checkReturnedPayment(){
       icon.className = 'status-badge-icon pending';
       icon.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
       title.textContent = 'Payment Processing… ⏳';
-      desc.textContent = 'Your payment is still being processed by the bank. We will notify you once confirmed.';
-      actionBtn.textContent = 'View Cart';
+      desc.textContent = 'Your payment is still being processed by the bank.';
+      actionBtn.textContent = 'Close';
       actionBtn.onclick = ()=>{
         modal.classList.remove('open');
         window.history.replaceState({}, document.title, window.location.pathname);
-        showView('cart');
       };
     } else {
       icon.className = 'status-badge-icon failed';
       icon.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>`;
       title.textContent = 'Payment Failed';
-      desc.textContent = data.error || 'The transaction could not be completed. Please try again.';
+      desc.textContent = data.error || 'Transaction was not completed.';
       actionBtn.textContent = 'Try Again';
       actionBtn.onclick = ()=>{
         modal.classList.remove('open');
         window.history.replaceState({}, document.title, window.location.pathname);
-        showView('cart');
       };
     }
 
@@ -1139,17 +967,12 @@ async function checkReturnedPayment(){
         <span style="color:#7a6d59;">Amount Paid</span>
         <span style="font-family:var(--font-mono);font-weight:700;">₹${(data.amount/100).toFixed(2)}</span>
       </div>` : ''}
-      ${data.paymentInstrument?.type ? `
-      <div style="display:flex;justify-content:space-between;font-size:13px;padding:4px 0;">
-        <span style="color:#7a6d59;">Payment Mode</span>
-        <span style="font-weight:600;">${data.paymentInstrument.type}</span>
-      </div>` : ''}
     `;
   } catch(err){
     console.error('Status check error:', err);
     icon.className = 'status-badge-icon failed';
-    title.textContent = 'Status Verification Failed';
-    desc.textContent = 'Could not verify transaction status. Please contact support.';
+    title.textContent = 'Status Verification';
+    desc.textContent = 'Could not verify transaction status.';
     actionBtn.textContent = 'Close';
     actionBtn.onclick = ()=>{ modal.classList.remove('open'); };
   }
@@ -1213,31 +1036,12 @@ document.getElementById('add-product-form').addEventListener('submit', (e)=>{
    LEGAL
    ============================================================ */
 const LEGAL = {
-  terms: `<h2>Terms and Conditions</h2>
-    <p>By using www.cissberry.com you agree to these terms. All products are described as accurately as possible; minor variations in colour, weight or appearance may occur as items are handmade in small batches.</p>
-    <p>Orders are confirmed once payment is received. We reserve the right to cancel an order and issue a refund if a product becomes unavailable after purchase. Consultation bookings are subject to practitioner availability and may be rescheduled with prior notice.</p>
-    <p>All content on this site, including recipes, formulations and branding, is the property of Cissberry and may not be reproduced without permission. These terms are governed by the laws of India.</p>
-    <p>Business entity: Cissberry <span class="placeholder">[legal entity name / proprietor name]</span>. Registered address: <span class="placeholder">[business address]</span>.</p>`,
-  refund: `<h2>Refund Policy</h2>
-    <p>If your order arrives damaged, incorrect, spoiled, or missing items, we will issue a full refund or replacement — contact us within 48 hours of delivery with photos of the item and packaging at <span class="placeholder">[support email]</span>.</p>
-    <p>Refunds for eligible cancellations are processed to the original payment method within 5–7 business days once approved. Orders cannot be refunded once a consumable item has been opened and consumed, except where the item was defective.</p>
-    <p>Consultation fees are refunded in full if a booking is cancelled by Cissberry, or if cancelled by the customer more than 4 hours before the scheduled slot. Cancellations within 4 hours of the appointment are non-refundable.</p>`,
-  privacy: `<h2>Privacy Policy</h2>
-    <p>Cissberry ("we", "us") collects the personal information you provide when placing an order or booking a consultation, including your name, contact details, shipping address, and — for consultations — health information you choose to share with our practitioner.</p>
-    <p>This information is used solely to fulfil orders, process payments, deliver consultations, and communicate with you about your purchase or booking. We do not sell your data to third parties. Health information shared during a consultation is treated as confidential and is only accessible to the treating practitioner.</p>
-    <p>Payment details are processed directly by our payment gateway partner (PhonePe) and are not stored on our servers. You may request access to, correction of, or deletion of your data by writing to <span class="placeholder">[support email]</span>.</p>`,
-  return: `<h2>Return Policy</h2>
-    <p>Because pickles, snacks and Ayurvedic preparations are consumable goods, we are unable to accept returns once an item has been opened or its seal broken, for hygiene and safety reasons.</p>
-    <p>Unopened items in original packaging may be returned within 3 days of delivery if you've changed your mind, subject to a return shipping fee. If an item arrives damaged, incorrect, or spoiled, see our Refund Policy — those cases are not treated as a change-of-mind return and are covered in full.</p>
-    <p>To start a return, write to <span class="placeholder">[support email]</span> with your order number.</p>`,
-  shipping: `<h2>Shipping Policy</h2>
-    <p>Orders are dispatched within 2–4 business days and shipped across India via trusted courier partners. Shipping is free on orders above ₹999; a flat ₹60 fee applies below that.</p>
-    <p>Estimated delivery time is 3–7 business days depending on location. You'll receive a tracking link by SMS/email once your order ships. Perishable items are packed to remain fresh in transit; if anything arrives compromised, see our Refund Policy.</p>
-    <p>We currently ship only within India. International shipping is not available at this time.</p>`,
-  medical: `<h2>Medical Disclaimer</h2>
-    <p>The Ayurvedic consultations, preparations and information provided on this site are intended for general wellness guidance and are based on traditional Ayurvedic practice. They are not intended to diagnose, treat, cure or prevent any disease, and are not a substitute for professional medical advice, diagnosis or treatment.</p>
-    <p>Always consult a qualified physician before starting any new treatment, especially if you are pregnant, nursing, on medication, or managing a chronic condition. In case of a medical emergency, contact your nearest hospital or emergency services immediately — do not rely on an online consultation.</p>
-    <p>Our consulting practitioner is <span class="placeholder">[name, qualification, registration number — add before launch]</span>, registered with <span class="placeholder">[State Ayurveda Council name]</span>.</p>`,
+  terms: `<h2>Terms and Conditions</h2><p>By using www.cissberry.com you agree to these terms.</p>`,
+  refund: `<h2>Refund Policy</h2><p>If your order arrives damaged, contact us within 48 hours.</p>`,
+  privacy: `<h2>Privacy Policy</h2><p>Payment details are processed directly by PhonePe.</p>`,
+  return: `<h2>Return Policy</h2><p>Consumable goods are non-returnable once opened.</p>`,
+  shipping: `<h2>Shipping Policy</h2><p>Orders dispatched within 2–4 business days.</p>`,
+  medical: `<h2>Medical Disclaimer</h2><p>Ayurvedic products are general wellness guidance.</p>`,
 };
 function renderLegal(key){
   if(!LEGAL[key]) key = 'terms';
