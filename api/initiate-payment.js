@@ -18,12 +18,13 @@ export default async function handler(req, res) {
     }
 
     const customerName = (name && name.trim()) || 'Guest Customer';
-    const customerEmail = (email && email.trim()) || 'customer@cissberry.com';
+    const customerEmail = (email && email.trim()) || 'customer@frontierstride.com';
     const customerMobile = (mobile && mobile.trim()) || '9999999999';
 
+    // Use approved URL: www.frontierstride.com
     const host = req.headers['x-forwarded-host'] || req.headers.host;
     const proto = req.headers['x-forwarded-proto'] || 'https';
-    const frontendUrl = process.env.FRONTEND_URL || `${proto}://${host}`;
+    const frontendUrl = process.env.FRONTEND_URL || 'https://www.frontierstride.com';
     const merchantTransactionId = `TXN_${Date.now()}_${crypto.randomBytes(4).toString('hex')}`;
     const redirectUrl = `${frontendUrl}/?txnId=${merchantTransactionId}`;
 
