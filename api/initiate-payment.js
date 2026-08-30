@@ -49,7 +49,7 @@ export default async function handler(req, res) {
             enabledPaymentModes: [
               {
                 type: 'UPI',
-                flows: ['QR'],
+                flows: ['QR', 'INTENT', 'COLLECT'],
               },
               {
                 type: 'CARD',
