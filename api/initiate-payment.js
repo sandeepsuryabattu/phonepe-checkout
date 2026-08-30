@@ -21,7 +21,7 @@ export default async function handler(req, res) {
     const customerEmail = (email && email.trim()) || 'customer@frontierstride.com';
     const customerMobile = (mobile && mobile.trim()) || '9999999999';
 
-    // Use approved URL: www.frontierstride.com
+    // Approved PhonePe URL: www.frontierstride.com
     const host = req.headers['x-forwarded-host'] || req.headers.host;
     const proto = req.headers['x-forwarded-proto'] || 'https';
     const frontendUrl = process.env.FRONTEND_URL || 'https://www.frontierstride.com';
@@ -43,6 +43,21 @@ export default async function handler(req, res) {
           type: 'PG_CHECKOUT',
           merchantUrls: {
             redirectUrl: redirectUrl,
+          },
+          paymentModeConfig: {
+            version: 'V2',
+            enabledPaymentModes: [
+              {
+                type: 'UPI',
+                flows: ['QR', 'INTENT', 'COLLECT'],
+              },
+              {
+                type: 'CARD',
+              },
+              {
+                type: 'NET_BANKING',
+              },
+            ],
           },
         },
         metaInfo: {
