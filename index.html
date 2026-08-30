@@ -4,858 +4,278 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Cissberry — Homemade Pickles, Snacks &amp; Ayurvedic Wellness</title>
+<title>Frontier Stride — School ERP &amp; Lending Software, Gudivada, India</title>
+<meta name="description" content="Frontier Stride is an Indian software development company building School ERP systems and fintech loan-management tools. Based in Gudivada, Andhra Pradesh.">
+<link rel="canonical" href="https://frontierstride.com/">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,560;9..144,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Frontier Stride",
+  "url": "https://frontierstride.com",
+  "email": "contact@frontierstride.com",
+  "description": "Software development company building School ERP systems and fintech loan-management tools.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "D. No. 10/248-21B, Kolusu Vari Street",
+    "addressLocality": "Gudivada",
+    "addressRegion": "Andhra Pradesh",
+    "postalCode": "521301",
+    "addressCountry": "IN"
+  }
+}
+</script>
 <style>
-  :root{
-    --ink:#221B14;
-    --paper:#F3ECDA;
-    --card:#FBF6E7;
-    --deep:#1F3A2E;
-    --deep2:#28483A;
-    --turmeric:#E0A63A;
-    --turmeric-deep:#B9822A;
-    --clay:#C1502E;
-    --sage:#6B7F4F;
-    --line: rgba(34,27,20,0.14);
-    --phonepe: #5f259f;
-    --font-display:'Fraunces', serif;
-    --font-body:'Manrope', sans-serif;
-    --font-mono:'Space Mono', monospace;
-  }
-  *{box-sizing:border-box;}
-  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);-webkit-font-smoothing:antialiased;}
-  img,svg{display:block;}
-  a{color:inherit;}
-  .hidden{display:none !important;}
-  button{font-family:inherit;cursor:pointer;}
-
-  /* ---------- Greeting overlay ---------- */
-  #greeting-overlay{
-    position:fixed;inset:0;z-index:100;
-    background:var(--deep);
-    color:var(--paper);
-    display:flex;align-items:center;justify-content:center;
-    text-align:center;
-    transition:transform .55s cubic-bezier(.2,.8,.2,1), opacity .5s ease;
-  }
-  #greeting-overlay.stamped{transform:scale(1);}
-  #greeting-overlay.leaving{transform:scale(1.4);opacity:0;pointer-events:none;}
-  .greeting-inner{max-width:560px;padding:0 28px;}
-  .greeting-eyebrow{
-    font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
-    color:var(--turmeric);margin-bottom:18px;display:inline-block;
-    border:1px dashed rgba(224,166,58,0.6);border-radius:999px;padding:6px 14px;
-  }
-  .greeting-text{font-family:var(--font-display);font-weight:500;font-style:italic;font-size:clamp(28px,5vw,46px);line-height:1.25;margin:0 0 30px;}
-  .greeting-enter{
-    background:var(--turmeric);color:var(--ink);border:none;border-radius:999px;
-    padding:14px 30px;font-weight:700;font-size:15px;letter-spacing:.02em;
-    display:inline-flex;align-items:center;gap:10px;
-  }
-  .greeting-enter:hover{background:#eab556;}
-
-  /* ---------- Header ---------- */
-  header.site-header{
-    position:sticky;top:0;z-index:40;background:rgba(243,236,218,0.92);backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--line);
-  }
-  .header-inner{max-width:1180px;margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
-  .logo{font-family:var(--font-display);font-weight:600;font-size:24px;letter-spacing:.01em;display:flex;align-items:center;gap:9px;cursor:pointer;}
-  .logo .dot{width:9px;height:9px;border-radius:50%;background:var(--clay);}
-  nav.main-nav{display:flex;gap:28px;align-items:center;font-size:14px;font-weight:600;}
-  nav.main-nav a{cursor:pointer;padding:6px 0;border-bottom:2px solid transparent;}
-  nav.main-nav a.active,nav.main-nav a:hover{border-bottom-color:var(--clay);}
-  .cart-btn{position:relative;display:flex;align-items:center;gap:8px;background:var(--deep);color:var(--paper);border:none;padding:9px 16px;border-radius:999px;font-weight:700;font-size:13px;}
-  .cart-count{background:var(--turmeric);color:var(--ink);border-radius:999px;min-width:18px;height:18px;font-size:11px;display:inline-flex;align-items:center;justify-content:center;padding:0 5px;}
-
-  /* ---------- Layout helpers ---------- */
-  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
-  .view{padding-bottom:80px;}
-  .section-label{font-family:var(--font-mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--clay);margin-bottom:10px;}
-  h1,h2,h3{font-family:var(--font-display);font-weight:600;margin:0;}
-  .stamp{
-    display:inline-flex;align-items:center;gap:6px;
-    border:1px dashed var(--deep);border-radius:999px;padding:5px 12px;
-    font-family:var(--font-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
-    color:var(--deep);transform:rotate(-2deg);background:rgba(31,58,46,0.04);
-  }
-  .stamp.gold{border-color:var(--turmeric-deep);color:var(--turmeric-deep);background:rgba(224,166,58,0.08);}
-  .stamp.one-rupee{border-color:#10b981;color:#10b981;background:rgba(16,185,129,0.1);font-weight:700;}
-
-  /* ---------- Hero ---------- */
-  .hero{padding:64px 0 56px;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;}
-  .hero h1{font-size:clamp(34px,4.4vw,54px);line-height:1.08;margin-bottom:18px;}
-  .hero h1 em{color:var(--clay);font-style:italic;}
-  .hero p.lede{font-size:17px;line-height:1.6;max-width:460px;color:#453a2b;margin-bottom:26px;}
-  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
-  .btn{border:none;border-radius:999px;padding:13px 24px;font-weight:700;font-size:14px;display:inline-flex;align-items:center;gap:8px;}
-  .btn-primary{background:var(--clay);color:#fff;}
-  .btn-primary:hover{background:#a8452a;}
-  .btn-phonepe{background:linear-gradient(135deg, #5f259f, #7b3fbf);color:#fff;}
-  .btn-phonepe:hover{opacity:0.94;}
-  .btn-outline{background:transparent;border:1.5px solid var(--ink);color:var(--ink);}
-  .btn-outline:hover{background:var(--ink);color:var(--paper);}
-  .hero-art{position:relative;aspect-ratio:1/1;border-radius:28px;background:var(--deep);overflow:hidden;}
-  .hero-art svg{width:100%;height:100%;}
-
-  /* trust strip */
-  .trust-strip{display:flex;gap:34px;flex-wrap:wrap;padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:8px 0 56px;}
-  .trust-item{display:flex;align-items:center;gap:10px;font-size:13.5px;font-weight:600;color:#453a2b;}
-  .trust-item .ico{width:30px;height:30px;flex:none;}
-
-  /* category tiles */
-  .categories{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:64px;}
-  .cat-tile{border-radius:22px;padding:34px;position:relative;overflow:hidden;min-height:220px;display:flex;flex-direction:column;justify-content:flex-end;cursor:pointer;}
-  .cat-tile.kitchen{background:linear-gradient(155deg,#E0A63A 0%, #C1502E 100%);color:#fff;}
-  .cat-tile.wellness{background:linear-gradient(155deg,#28483A 0%, #1F3A2E 100%);color:var(--paper);}
-  .cat-tile h3{font-size:26px;margin-bottom:6px;}
-  .cat-tile p{margin:0;font-size:14px;opacity:.92;max-width:280px;}
-  .cat-tile .tag{position:absolute;top:22px;left:22px;font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.85;}
-  .cat-tile .arrow{position:absolute;top:22px;right:22px;font-size:20px;}
-
-  /* products grid */
-  .section-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:26px;flex-wrap:wrap;gap:10px;}
-  .filter-row{display:flex;gap:10px;margin-bottom:30px;flex-wrap:wrap;}
-  .filter-chip{border:1.5px solid var(--ink);border-radius:999px;padding:8px 18px;font-size:13px;font-weight:700;background:transparent;cursor:pointer;}
-  .filter-chip.active{background:var(--ink);color:var(--paper);}
-  .sort-select{border:1.5px solid var(--line);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:600;background:var(--card);}
-
-  .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:60px;}
-  .p-card{background:var(--card);border-radius:20px;padding:18px;border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .18s ease, box-shadow .18s ease;}
-  .p-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(34,27,20,0.08);}
-  .p-media{aspect-ratio:1/1;border-radius:14px;overflow:hidden;margin-bottom:14px;cursor:pointer;}
-  .p-media svg{width:100%;height:100%;}
-  .p-badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;}
-  .p-cat{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--sage);margin-bottom:5px;}
-  .p-name{font-size:17px;font-weight:700;margin-bottom:4px;cursor:pointer;}
-  .p-tag{font-size:13px;color:#5c5040;line-height:1.4;margin-bottom:12px;flex:1;}
-  .p-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:auto;}
-  .p-price{font-family:var(--font-mono);font-weight:700;font-size:16px;}
-  .p-actions{display:flex;gap:8px;}
-  .icon-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--ink);background:transparent;display:flex;align-items:center;justify-content:center;}
-  .icon-btn:hover{background:var(--ink);color:var(--paper);}
-  .buy-now-btn{background:linear-gradient(135deg, #5f259f, #7b3fbf);color:#fff;border:none;border-radius:999px;padding:9px 18px;font-weight:700;font-size:13px;display:inline-flex;align-items:center;gap:6px;}
-  .buy-now-btn:hover{opacity:0.92;}
-
-  /* Product detail */
-  .product-detail{display:grid;grid-template-columns:1fr 1fr;gap:52px;padding-top:44px;}
-  .pd-media{border-radius:26px;overflow:hidden;background:var(--card);aspect-ratio:1/1;}
-  .pd-media svg{width:100%;height:100%;}
-  .pd-info .p-cat{font-size:12px;}
-  .pd-info h1{font-size:34px;margin:6px 0 12px;}
-  .pd-price{font-family:var(--font-mono);font-size:24px;font-weight:700;margin-bottom:18px;}
-  .pd-desc{font-size:15px;line-height:1.7;color:#453a2b;margin-bottom:22px;}
-  .pd-badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
-  .pd-cta-row{display:flex;gap:12px;margin-bottom:26px;}
-  .pd-note{font-size:12.5px;color:#7a6d59;border-top:1px solid var(--line);padding-top:16px;}
-  .back-link{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:13px;margin:28px 0 0;cursor:pointer;}
-
-  /* Cart */
-  .cart-layout{display:grid;grid-template-columns:1.6fr 1fr;gap:44px;padding-top:34px;align-items:start;}
-  .cart-line{display:flex;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line);}
-  .cart-line .thumb{width:64px;height:64px;border-radius:12px;overflow:hidden;background:var(--card);flex:none;}
-  .cart-line .thumb svg{width:100%;height:100%;}
-  .cart-line-info{flex:1;}
-  .cart-line-info .name{font-weight:700;font-size:14.5px;}
-  .cart-line-info .cat{font-size:11.5px;color:var(--sage);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.08em;}
-  .cart-line-price{font-family:var(--font-mono);font-weight:700;font-size:14px;}
-  .remove-x{background:none;border:none;color:var(--clay);font-weight:700;font-size:13px;}
-  .summary-card{background:var(--card);border-radius:20px;padding:26px;border:1px solid var(--line);}
-  .summary-row{display:flex;justify-content:space-between;font-size:14px;margin-bottom:10px;color:#453a2b;}
-  .summary-row.total{font-weight:800;font-size:17px;color:var(--ink);border-top:1px solid var(--line);padding-top:14px;margin-top:14px;}
-  .empty-state{padding:70px 0;text-align:center;color:#7a6d59;}
-  .empty-state .btn{margin-top:18px;}
-
-  /* Consultation */
-  .consult-layout{display:grid;grid-template-columns:1fr 1fr;gap:52px;padding-top:34px;align-items:start;}
-  .consult-card{background:var(--deep);color:var(--paper);border-radius:24px;padding:32px;margin-bottom:20px;}
-  .consult-card h3{font-size:20px;margin-bottom:8px;}
-  .consult-card p{font-size:13.5px;line-height:1.6;opacity:.88;margin-bottom:16px;}
-  .consult-card .price{font-family:var(--font-mono);font-weight:700;font-size:18px;color:var(--turmeric);margin-bottom:14px;}
-  .practitioner-box{border:1px dashed var(--line);border-radius:16px;padding:16px;font-size:12.5px;color:#7a6d59;margin-bottom:26px;}
-  form.consult-form{display:flex;flex-direction:column;gap:14px;}
-  .form-row{display:flex;flex-direction:column;gap:6px;}
-  .form-row label{font-size:12.5px;font-weight:700;letter-spacing:.02em;}
-  .form-row input, .form-row select, .form-row textarea{
-    border:1.5px solid var(--line);border-radius:12px;padding:11px 14px;font-family:inherit;font-size:14px;background:var(--card);
-  }
-  .form-row textarea{resize:vertical;min-height:80px;}
-
-  /* Admin */
-  .admin-layout{padding-top:34px;}
-  .admin-table{width:100%;border-collapse:collapse;background:var(--card);border-radius:16px;overflow:hidden;border:1px solid var(--line);}
-  .admin-table th,.admin-table td{padding:12px 16px;text-align:left;font-size:13.5px;border-bottom:1px solid var(--line);}
-  .admin-table th{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#7a6d59;}
-  .admin-table input{width:100%;border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-size:13px;background:#fff;}
-  .admin-actions button{margin-right:6px;font-size:12px;font-weight:700;border:none;border-radius:8px;padding:6px 10px;}
-  .save-btn{background:var(--sage);color:#fff;}
-  .del-btn{background:var(--clay);color:#fff;}
-  .add-product-form{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px;background:var(--card);padding:20px;border-radius:16px;border:1px solid var(--line);}
-  .add-product-form input,.add-product-form select{border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:13px;}
-  .admin-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--deep);color:var(--paper);padding:12px 22px;border-radius:999px;font-size:13px;font-weight:700;z-index:60;opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;}
-  .admin-toast.show{opacity:1;transform:translateX(-50%) translateY(-6px);}
-  .admin-note{font-size:12.5px;color:#7a6d59;background:rgba(107,127,79,0.08);border:1px dashed var(--sage);border-radius:12px;padding:14px 16px;margin-bottom:24px;}
-
-  /* Legal */
-  .legal-nav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
-  .url-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--card);border:1px dashed var(--sage);border-radius:12px;padding:12px 16px;margin-bottom:12px;font-size:12.5px;color:#453a2b;}
-  .url-bar code{font-family:var(--font-mono);background:#fff;border:1px solid var(--line);border-radius:8px;padding:5px 10px;font-size:12px;color:var(--deep);}
-  .url-bar button{border:1px solid var(--ink);background:transparent;border-radius:8px;padding:5px 12px;font-size:11.5px;font-weight:700;}
-  .url-bar button:hover{background:var(--ink);color:var(--paper);}
-  .legal-section{max-width:760px;padding-top:20px;font-size:14.5px;line-height:1.75;color:#3a3123;}
-  .legal-section h2{font-size:22px;margin:32px 0 12px;}
-  .legal-section h2:first-child{margin-top:0;}
-
-  /* Modal System */
-  .modal-overlay{
-    position:fixed;inset:0;z-index:90;
-    background:rgba(34,27,20,0.65);backdrop-filter:blur(6px);
-    display:flex;align-items:center;justify-content:center;
-    padding:20px;opacity:0;pointer-events:none;
-    transition:opacity .25s ease;
-  }
-  .modal-overlay.open{opacity:1;pointer-events:auto;}
-  .modal-card{
-    background:var(--paper);border-radius:24px;max-width:520px;width:100%;
-    box-shadow:0 24px 60px rgba(34,27,20,0.25);border:1px solid var(--line);
-    max-height:90vh;overflow-y:auto;transform:scale(0.96);
-    transition:transform .25s cubic-bezier(.2,.8,.2,1);
-  }
-  .modal-overlay.open .modal-card{transform:scale(1);}
-  .modal-body{padding:36px 28px;text-align:center;}
-  .status-badge-icon{
-    width:72px;height:72px;border-radius:50%;margin:0 auto 18px;
-    display:flex;align-items:center;justify-content:center;
-  }
-  .status-badge-icon.success{background:#d1fae5;color:#10b981;}
-  .status-badge-icon.failed{background:#fee2e2;color:#ef4444;}
-  .status-badge-icon.pending{background:#fef3c7;color:#f59e0b;}
-  .status-badge-icon svg{width:38px;height:38px;}
-
-  /* Spinner */
-  .spinner{
-    width:20px;height:20px;border:2.5px solid rgba(255,255,255,0.3);
-    border-top-color:#fff;border-radius:50%;display:inline-block;
-    animation:spin .6s linear infinite;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
-
   /* Direct buy loading overlay */
   #direct-buy-overlay{
-    position:fixed;inset:0;z-index:99;
-    background:rgba(31,58,46,0.85);backdrop-filter:blur(8px);
-    display:flex;align-items:center;justify-content:center;
-    color:var(--paper);text-align:center;
-    opacity:0;pointer-events:none;transition:opacity .2s ease;
+    position:fixed;inset:0;background:rgba(20,16,10,0.85);backdrop-filter:blur(10px);
+    z-index:99999;display:flex;align-items:center;justify-content:center;
+    opacity:0;pointer-events:none;transition:opacity 0.25s ease;
   }
   #direct-buy-overlay.open{opacity:1;pointer-events:auto;}
+  .direct-card{
+    background:#1E293B;color:#fff;border-radius:20px;padding:36px;max-width:420px;width:90%;
+    text-align:center;box-shadow:0 24px 60px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.1);
+  }
+  .spinner{
+    width:52px;height:52px;border:4px solid rgba(255,255,255,0.15);
+    border-top-color:#5f259f;border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 20px;
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
 
-  footer.site-footer{background:var(--deep);color:var(--paper);padding:52px 0 26px;margin-top:20px;}
-  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px;}
-  .footer-grid h4{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--turmeric);margin-bottom:14px;}
-  .footer-grid a{display:block;font-size:13.5px;opacity:.85;margin-bottom:8px;cursor:pointer;}
-  .footer-grid a:hover{opacity:1;text-decoration:underline;}
-  .footer-bottom{border-top:1px solid rgba(243,236,218,0.14);padding-top:20px;display:flex;justify-content:space-between;font-size:12px;opacity:.7;flex-wrap:wrap;gap:8px;}
-
-  @media (max-width:880px){
-    .hero{grid-template-columns:1fr;gap:32px;}
-    .categories{grid-template-columns:1fr;}
-    .product-grid{grid-template-columns:repeat(2,1fr);}
-    .product-detail,.cart-layout,.consult-layout{grid-template-columns:1fr;}
-    nav.main-nav{display:none;}
-    .footer-grid{grid-template-columns:1fr 1fr;}
-    .add-product-form{grid-template-columns:1fr 1fr;}
+  /* Status modal */
+  #status-modal{
+    position:fixed;inset:0;background:rgba(20,16,10,0.85);backdrop-filter:blur(8px);
+    z-index:99999;display:flex;align-items:center;justify-content:center;
+    opacity:0;pointer-events:none;transition:opacity 0.25s;
+  }
+  #status-modal.open{opacity:1;pointer-events:auto;}
+  .status-card{
+    background:#fff;color:#111;border-radius:20px;padding:36px;max-width:440px;width:90%;
+    text-align:center;box-shadow:0 24px 60px rgba(0,0,0,0.4);
   }
 </style>
 </head>
 <body>
 
-<!-- ===================== DIRECT BUY OVERLAY ===================== -->
-<div id="direct-buy-overlay">
-  <div>
-    <span class="spinner" style="width:44px;height:44px;border-width:3.5px;border-color:rgba(224,166,58,0.2);border-top-color:var(--turmeric);margin-bottom:18px;"></span>
-    <h2 style="font-size:24px;margin-bottom:8px;color:#fff;" id="direct-buy-title">Connecting to PhonePe…</h2>
-    <p style="opacity:0.85;font-size:14px;">Opening PhonePe secure payment gateway. Please wait…</p>
-  </div>
-</div>
-
-<!-- ===================== GREETING OVERLAY ===================== -->
-<div id="greeting-overlay">
-  <div class="greeting-inner">
-    <span class="greeting-eyebrow" id="greeting-eyebrow">Cissberry</span>
-    <p class="greeting-text" id="greeting-text">Welcome.</p>
-    <button class="greeting-enter" id="greeting-enter-btn">Step inside <span>→</span></button>
-  </div>
-</div>
-
-<!-- ===================== HEADER ===================== -->
 <header class="site-header">
-  <div class="header-inner">
-    <div class="logo" data-nav="home"><span class="dot"></span>Cissberry</div>
-    <nav class="main-nav">
-      <a data-nav="home" class="active">Home</a>
-      <a data-nav="shop" data-filter="all">Shop</a>
-      <a data-nav="shop" data-filter="kitchen">Pickles &amp; Snacks</a>
-      <a data-nav="shop" data-filter="ayurveda">Ayurveda</a>
-      <a data-nav="consult">Consultation</a>
-      <a data-nav="legal">Policies</a>
-      <a data-nav="admin" style="opacity:.55;font-size:12px;">Owner login</a>
+  <div class="wrap nav-row">
+    <a href="/" class="brand">Frontier<span style="font-weight:400;">Stride</span><span class="mark">FS</span></a>
+    <button class="nav-toggle" aria-label="Toggle menu"><span></span></button>
+    <nav class="primary-nav">
+      <a href="/" class="active">Home</a>
+      <a href="/about.html">About</a>
+      <a href="/#products">Products</a>
+      <a href="/cissberry.html" style="background:#5f259f;color:#fff;padding:6px 14px;border-radius:999px;font-weight:600;display:inline-flex;align-items:center;gap:6px;">⚡ Cissberry Store</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/contact.html">Contact</a>
     </nav>
-    <button class="cart-btn" data-nav="cart">
-      Cart <span class="cart-count" id="cart-count">0</span>
-    </button>
   </div>
 </header>
 
-<main>
-
-<!-- ===================== HOME ===================== -->
-<section class="view" id="view-home">
+<section class="hero">
   <div class="wrap">
-    <div class="hero">
-      <div>
-        <span class="stamp one-rupee" style="margin-bottom:18px;">✨ ₹1 Quick Buy Active</span>
-        <h1>Pickled, spiced &amp; <em>prescribed</em> — the honest way.</h1>
-        <p class="lede">Homemade pickles and snacks made in small batches, alongside proprietary Ayurvedic preparations and on-demand consultations with a registered practitioner. 1-click PhonePe checkout.</p>
-        <div class="hero-ctas">
-          <button class="btn btn-primary" data-nav="shop" data-filter="all">Shop the pantry</button>
-          <button class="btn btn-outline" data-nav="consult">Book a consultation</button>
-        </div>
-      </div>
-      <div class="hero-art">
-        <svg viewBox="0 0 400 400"><rect width="400" height="400" fill="#1F3A2E"/>
-          <circle cx="200" cy="170" r="95" fill="#28483A"/>
-          <ellipse cx="200" cy="270" rx="120" ry="18" fill="#16281f"/>
-          <rect x="140" y="90" width="120" height="150" rx="18" fill="#E0A63A"/>
-          <rect x="150" y="70" width="100" height="30" rx="10" fill="#C1502E"/>
-          <circle cx="200" cy="165" r="34" fill="#F3ECDA" opacity="0.9"/>
-          <text x="200" y="172" font-family="Space Mono" font-size="11" fill="#1F3A2E" text-anchor="middle">CISSBERRY</text>
-          <path d="M60 320 Q200 280 340 320" stroke="#E0A63A" stroke-width="2" fill="none" opacity="0.5"/>
-        </svg>
-      </div>
-    </div>
-
-    <div class="trust-strip">
-      <div class="trust-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-1.5L12 2z" fill="#C1502E"/></svg></span>Made fresh, small batches only</div>
-      <div class="trust-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#6B7F4F"/><path d="M8 12l2.5 2.5L16 9" stroke="#F3ECDA" stroke-width="2" fill="none"/></svg></span>Registered Ayurvedic practitioner</div>
-      <div class="trust-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="13" rx="2" fill="#E0A63A"/><path d="M3 10h18" stroke="#1F3A2E" stroke-width="1.5"/></svg></span>1-Click PhonePe UPI &amp; Cards</div>
-      <div class="trust-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h16M4 12l5-5M4 12l5 5" stroke="#1F3A2E" stroke-width="2" fill="none"/></svg></span>Shipped across India</div>
-    </div>
-
-    <div class="section-label">Two pantries, one kitchen</div>
-    <div class="categories">
-      <div class="cat-tile kitchen" data-nav="shop" data-filter="kitchen">
-        <span class="tag">The Kitchen</span><span class="arrow">↗</span>
-        <h3>Pickles &amp; snacks</h3>
-        <p>Andhra-style avakaya, gongura, murukku and more — made the way grandmothers taught us.</p>
-      </div>
-      <div class="cat-tile wellness" data-nav="shop" data-filter="ayurveda">
-        <span class="tag">The Apothecary</span><span class="arrow">↗</span>
-        <h3>Ayurvedic preparations</h3>
-        <p>Proprietary churnas, tonics and capsules, formulated in-house and backed by consultation.</p>
-      </div>
-    </div>
-
-    <div class="section-head">
-      <h2>Fresh off the shelf</h2>
-      <a data-nav="shop" data-filter="all" style="font-weight:700;font-size:13px;cursor:pointer;">View all →</a>
-    </div>
-    <div class="product-grid" id="home-featured-grid"></div>
-  </div>
-</section>
-
-<!-- ===================== SHOP ===================== -->
-<section class="view hidden" id="view-shop">
-  <div class="wrap">
-    <div class="section-head" style="padding-top:36px;">
-      <div>
-        <div class="section-label">Full catalog</div>
-        <h1 style="font-size:32px;">Shop Cissberry</h1>
-      </div>
-      <select class="sort-select" id="sort-select">
-        <option value="featured">Sort: Featured</option>
-        <option value="low">Price: Low to high</option>
-        <option value="high">Price: High to low</option>
-        <option value="name">Name: A–Z</option>
-      </select>
-    </div>
-    <div class="filter-row" id="filter-row">
-      <button class="filter-chip active" data-filter="all">All Products</button>
-      <button class="filter-chip" data-filter="kitchen">Pickles &amp; Snacks</button>
-      <button class="filter-chip" data-filter="ayurveda">Ayurvedic Preparations</button>
-    </div>
-    <div class="product-grid" id="shop-grid"></div>
-  </div>
-</section>
-
-<!-- ===================== PRODUCT DETAIL ===================== -->
-<section class="view hidden" id="view-product">
-  <div class="wrap">
-    <span class="back-link" data-nav="shop" data-filter="all">← Back to shop</span>
-    <div class="product-detail" id="product-detail-content"></div>
-  </div>
-</section>
-
-<!-- ===================== CART ===================== -->
-<section class="view hidden" id="view-cart">
-  <div class="wrap">
-    <div class="section-head" style="padding-top:36px;">
-      <h1 style="font-size:32px;">Your cart</h1>
-    </div>
-    <div id="cart-content"></div>
-  </div>
-</section>
-
-<!-- ===================== CONSULTATION ===================== -->
-<section class="view hidden" id="view-consult">
-  <div class="wrap">
-    <div class="section-head" style="padding-top:36px;">
-      <div>
-        <div class="section-label">On-demand Ayurveda</div>
-        <h1 style="font-size:32px;">Book a consultation</h1>
-      </div>
-    </div>
-    <div class="consult-layout">
-      <div>
-        <div class="consult-card">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;">
-            <h3>General Consultation</h3>
-            <span class="stamp one-rupee">Test ₹1</span>
-          </div>
-          <p>A 30-minute video/audio consultation covering your concern, history and a personalised recommendation.</p>
-          <div class="price">₹1 <span style="font-size:12px;font-weight:400;opacity:.7;">(Test Mode)</span></div>
-          <button class="btn btn-phonepe" onclick="directPay(1, 'General Consultation')">Pay ₹1 Direct →</button>
-        </div>
-        <div class="consult-card" style="background:#28483A;">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;">
-            <h3>Follow-up Consultation</h3>
-            <span class="stamp one-rupee">Test ₹1</span>
-          </div>
-          <p>A shorter 20-minute check-in for existing patients continuing a treatment plan.</p>
-          <div class="price">₹1 <span style="font-size:12px;font-weight:400;opacity:.7;">(Test Mode)</span></div>
-          <button class="btn btn-phonepe" onclick="directPay(1, 'Follow-up Consultation')">Pay ₹1 Direct →</button>
-        </div>
-      </div>
-      <div>
-        <div class="practitioner-box" style="margin-bottom:16px;">
-          <strong>Direct Checkout Enabled:</strong> Click any "Pay Direct" button to skip entering forms and jump straight to the PhonePe UPI/card screen.
-        </div>
-        <form class="consult-form" id="consult-form">
-          <div class="form-row">
-            <label>Consultation Service</label>
-            <select id="c-type">
-              <option value="1">General Consultation — ₹1 (Test)</option>
-              <option value="1">Follow-up Consultation — ₹1 (Test)</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-phonepe" style="justify-content:center;margin-top:10px;">
-            Instant PhonePe Checkout (₹1) →
-          </button>
-        </form>
-      </div>
+    <span class="eyebrow">Software for schools &amp; lenders</span>
+    <h1>We build the systems institutions run on.</h1>
+    <p class="lede">Frontier Stride is an Indian software development company designing two focused product lines: a School ERP for day-to-day campus administration, and loan-management tools for lenders who need discipline in every step of a credit cycle.</p>
+    <div class="hero-actions">
+      <a href="/contact.html" class="btn btn-brass">Get in touch</a>
+      <a href="/about.html" class="btn btn-outline-ink">About the company</a>
+      <button onclick="directPay(100, 'Cissberry Sample ₹1')" class="btn" style="background:linear-gradient(135deg, #5f259f, #7b3fbf);color:#fff;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-weight:700;">⚡ Buy Cissberry Sample ₹1</button>
     </div>
   </div>
+  <svg class="stride-graphic" viewBox="0 0 420 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M20 300 H110 V240 H200 V180 H290 V120 H380 V60" stroke="#2C3A56" stroke-width="1.5"/>
+    <path d="M20 300 H110 V240 H200 V180 H290 V120 H380" stroke="#B8862F" stroke-width="1.5" stroke-dasharray="4 6"/>
+    <circle cx="20" cy="300" r="4" fill="#9AA6B8"/>
+    <circle cx="110" cy="240" r="4" fill="#9AA6B8"/>
+    <circle cx="200" cy="180" r="4" fill="#9AA6B8"/>
+    <circle cx="290" cy="120" r="4" fill="#9AA6B8"/>
+    <circle cx="380" cy="60" r="6" fill="#D9A548"/>
+  </svg>
 </section>
 
-<!-- ===================== ADMIN ===================== -->
-<section class="view hidden" id="view-admin">
+<div class="trust">
   <div class="wrap">
-    <div class="section-head" style="padding-top:36px;">
-      <div>
-        <div class="section-label">Owner area — demo</div>
-        <h1 style="font-size:32px;">Manage your store</h1>
-      </div>
-    </div>
-    <table class="admin-table" id="admin-table">
-      <thead><tr><th>Name</th><th>Category</th><th>Price (₹)</th><th>Unit</th><th>Tagline</th><th></th></tr></thead>
-      <tbody id="admin-tbody"></tbody>
-    </table>
-    <h3 style="margin-top:34px;font-size:17px;">Add a new product</h3>
-    <form class="add-product-form" id="add-product-form">
-      <input id="np-name" placeholder="Product name" required>
-      <select id="np-cat"><option value="kitchen">Pickles &amp; Snacks</option><option value="ayurveda">Ayurvedic Preparations</option></select>
-      <input id="np-price" type="number" placeholder="Price (₹)" required>
-      <input id="np-unit" placeholder="Unit, e.g. 250g jar" required>
-      <input id="np-tag" placeholder="Short tagline" style="grid-column:1/-1;">
-      <button type="submit" class="btn btn-primary" style="grid-column:1/-1;justify-content:center;">Add product</button>
-    </form>
-  </div>
-</section>
-
-<!-- ===================== LEGAL ===================== -->
-<section class="view hidden" id="view-legal">
-  <div class="wrap">
-    <div class="section-head" style="padding-top:36px;">
-      <div>
-        <div class="section-label">Store policies</div>
-        <h1 style="font-size:32px;">Legal &amp; policies</h1>
-      </div>
-    </div>
-    <div class="legal-nav">
-      <button class="filter-chip active" data-legal="terms">Terms &amp; Conditions</button>
-      <button class="filter-chip" data-legal="refund">Refund Policy</button>
-      <button class="filter-chip" data-legal="privacy">Privacy Policy</button>
-      <button class="filter-chip" data-legal="return">Return Policy</button>
-      <button class="filter-chip" data-legal="shipping">Shipping Policy</button>
-      <button class="filter-chip" data-legal="medical">Medical Disclaimer</button>
-    </div>
-    <div class="url-bar" id="legal-url-bar">
-      <span>Page URL:</span>
-      <code id="legal-url-code"></code>
-      <button id="legal-url-copy" type="button">Copy</button>
-    </div>
-    <div class="legal-section" id="legal-content"></div>
-  </div>
-</section>
-
-</main>
-
-<!-- ===================== PAYMENT STATUS MODAL ===================== -->
-<div class="modal-overlay" id="status-modal">
-  <div class="modal-card">
-    <div class="modal-body">
-      <div class="status-badge-icon" id="status-icon">
-        <span class="spinner" style="width:36px;height:36px;border-color:rgba(95,37,159,0.2);border-top-color:var(--phonepe);"></span>
-      </div>
-      <h2 style="font-size:26px;margin-bottom:8px;" id="status-title">Verifying Payment…</h2>
-      <p style="color:#5c5040;font-size:14px;margin-bottom:24px;" id="status-desc">Please hold on while we securely confirm your payment with PhonePe.</p>
-      
-      <div id="status-details" style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:24px;text-align:left;display:none;"></div>
-      
-      <button class="btn btn-primary" id="status-action-btn" style="width:100%;justify-content:center;">Continue Shopping</button>
-    </div>
+    <div class="trust-item"><strong>Entity type</strong>Sole proprietorship, India</div>
+    <div class="trust-item"><strong>Registered</strong>Udyam (MSME), Govt. of India</div>
+    <div class="trust-item"><strong>Based in</strong>Gudivada, Andhra Pradesh</div>
+    <div class="trust-item"><strong>Focus</strong>School ERP &amp; fintech software</div>
   </div>
 </div>
+
+<section id="products">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">What we build</span>
+      <h2>Two product lines, one operating discipline</h2>
+      <p>Both products come from the same premise: institutions run better when their record-keeping is accurate, auditable, and doesn't depend on spreadsheets held together by habit.</p>
+    </div>
+
+    <div class="ledger">
+      <div class="ledger-col">
+        <span class="tag">Education</span>
+        <h3>School ERP</h3>
+        <p>A single system for admissions, attendance, fee collection, timetables, and academic records — built for K-12 schools that are currently juggling registers, spreadsheets, and separate fee software.</p>
+        <ul>
+          <li>Student admissions &amp; records</li>
+          <li>Attendance and timetable management</li>
+          <li>Fee collection and receipts</li>
+          <li>Staff and payroll tracking</li>
+          <li>Parent-facing communication</li>
+        </ul>
+        <span class="status">Status — in development</span>
+      </div>
+      <div class="spine"></div>
+      <div class="ledger-col">
+        <span class="tag">Fintech</span>
+        <h3>Loan Management Tools</h3>
+        <p>Software for lenders and loan originators to manage a credit cycle end to end — application intake, underwriting checklists, disbursal tracking, and repayment schedules, with a clear audit trail at every stage.</p>
+        <ul>
+          <li>Loan application &amp; intake tracking</li>
+          <li>Underwriting checklists &amp; approvals</li>
+          <li>Disbursal and repayment schedules</li>
+          <li>Collections and overdue tracking</li>
+          <li>Reporting for compliance reviews</li>
+        </ul>
+        <span class="status">Status — in development</span>
+      </div>
+    </div>
+
+    <div class="pricing-disclosure">
+      <span class="eyebrow">Pricing</span>
+      <p>Pricing depends on institution size, modules selected, and support level. Across our School ERP and loan-management engagements, service fees typically range from <strong>₹5,000</strong> to <strong>₹10,000</strong>. Get in touch for a quote tailored to your requirement.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="tight">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">How we work</span>
+      <h2>Small team, direct accountability</h2>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <span class="num">01</span>
+        <h3>Built by one team</h3>
+        <p>Frontier Stride is a single, accountable proprietorship — not a reseller or an agency layer. The person who scopes your requirement is the same one who answers for the build.</p>
+      </div>
+      <div class="card">
+        <span class="num">02</span>
+        <h3>Domain-first, not generic</h3>
+        <p>We aren't building a general-purpose app toolkit. Every decision in the School ERP and the lending product is made against how schools and lenders actually operate day to day.</p>
+      </div>
+      <div class="card">
+        <span class="num">03</span>
+        <h3>Data handled carefully</h3>
+        <p>Both product lines touch sensitive records — student data on one side, financial data on the other. Our privacy and security approach is built around that, not added afterward.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap">
+    <div class="contact-block">
+      <div>
+        <span class="eyebrow" style="color:#D9A548;">Talk to us</span>
+        <h2>Have a school or a lending desk to digitise?</h2>
+        <p>Write to us with a short description of your setup — number of students or loan volume, what you're using today, and what's breaking down. We reply from a real inbox, not a ticketing queue.</p>
+        <a href="/contact.html" class="btn btn-brass">Contact details</a>
+      </div>
+      <div>
+        <div class="contact-detail">
+          <span class="label">Email</span>
+          <a class="value" href="mailto:contact@frontierstride.com">contact@frontierstride.com</a>
+        </div>
+        <div class="contact-detail">
+          <span class="label">Registered address</span>
+          <span class="value">D. No. 10/248-21B, Kolusu Vari Street, Gudivada, Krishna District, Andhra Pradesh 521301, India</span>
+        </div>
+        <div class="contact-detail">
+          <span class="label">Entity</span>
+          <span class="value">Frontier Stride — Sole Proprietorship</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <div class="logo" style="margin-bottom:12px;">Cissberry</div>
-        <p style="font-size:13px;opacity:.8;line-height:1.6;max-width:260px;">Homemade pickles, snacks and proprietary Ayurvedic preparations, with on-demand consultations from a registered practitioner.</p>
+        <a href="/" class="brand">Frontier<span style="font-weight:400;">Stride</span><span class="mark">FS</span></a>
+        <p style="margin-top:14px; max-width:34ch;">Software development company building School ERP and fintech loan-management tools. Gudivada, Andhra Pradesh, India.</p>
       </div>
       <div>
-        <h4>Shop</h4>
-        <a data-nav="shop" data-filter="kitchen">Pickles &amp; Snacks</a>
-        <a data-nav="shop" data-filter="ayurveda">Ayurvedic Preparations</a>
-        <a data-nav="consult">Book a Consultation</a>
+        <h4>Site</h4>
+        <ul>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/#products">Products</a></li>
+          <li><a href="/cissberry.html">Cissberry Store</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
       </div>
       <div>
-        <h4>Company</h4>
-        <a data-nav="legal" data-legal-key="terms">Terms &amp; Conditions</a>
-        <a data-nav="legal" data-legal-key="refund">Refund Policy</a>
-        <a data-nav="legal" data-legal-key="privacy">Privacy Policy</a>
-        <a data-nav="legal" data-legal-key="return">Return Policy</a>
-        <a data-nav="legal" data-legal-key="shipping">Shipping Policy</a>
-        <a data-nav="admin">Owner login</a>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <a>[Business address — add before launch]</a>
-        <a>[Phone number]</a>
-        <a>[Support email]</a>
-        <a>FSSAI Lic. [add number]</a>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="/privacy.html">Privacy Policy</a></li>
+          <li><a href="/terms.html">Terms of Service</a></li>
+          <li><a href="/refund.html">Refund Policy</a></li>
+          <li><a href="/return.html">Return Policy</a></li>
+          <li><a href="/shipping.html">Shipping Policy</a></li>
+        </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Cissberry. All rights reserved.</span>
-      <span>www.cissberry.com</span>
+      <span>© <span id="year"></span> Frontier Stride. All rights reserved.</span>
+      <span>Gudivada, Andhra Pradesh, India</span>
     </div>
   </div>
 </footer>
 
-<div class="admin-toast" id="admin-toast"></div>
+<!-- ===================== DIRECT BUY OVERLAY ===================== -->
+<div id="direct-buy-overlay">
+  <div class="direct-card">
+    <div class="spinner"></div>
+    <h2 style="font-size:22px;margin-bottom:8px;color:#fff;" id="direct-buy-title">Connecting to PhonePe…</h2>
+    <p style="color:#94a3b8;font-size:14px;margin-bottom:0;" id="direct-buy-subtitle">Opening secure payment gateway…</p>
+  </div>
+</div>
 
+<!-- ===================== PAYMENT STATUS MODAL ===================== -->
+<div id="status-modal">
+  <div class="status-card">
+    <div id="status-icon" style="font-size:52px;margin-bottom:12px;">⏳</div>
+    <h2 id="status-title" style="font-size:24px;margin-bottom:8px;color:#0f172a;">Verifying Payment…</h2>
+    <p id="status-desc" style="color:#64748b;font-size:14px;line-height:1.6;margin-bottom:24px;">Please wait while we confirm your transaction with PhonePe.</p>
+    <div id="status-details" style="background:#f8fafc;border-radius:12px;padding:16px;margin-bottom:24px;font-family:monospace;font-size:13px;text-align:left;display:none;"></div>
+    <button onclick="closeStatusModal()" style="background:#0f172a;color:#fff;border:none;border-radius:999px;padding:12px 28px;font-weight:700;font-size:14px;cursor:pointer;">Continue</button>
+  </div>
+</div>
+
+<script src="/assets/main.js"></script>
 <script>
-/* ============================================================
-   DATA (Includes 1 Rupee Items)
-   ============================================================ */
-let PRODUCTS = [
-  {id:'p1', name:'Andhra Mango Avakaya (Sample)', cat:'kitchen', tag:'Authentic raw mango pickle sample jar', price:1, unit:'50g sample', badges:['₹1 Test Item','Small batch']},
-  {id:'p2', name:'Triphala Churna (Sample)', cat:'ayurveda', tag:'Digestive blend herbal sample tin', price:1, unit:'20g tester', badges:['₹1 Test Item','In-house']},
-  {id:'p3', name:'Kerala Banana Chips (Sample)', cat:'kitchen', tag:'Coconut-oil fried plantain sample pouch', price:1, unit:'30g pouch', badges:['₹1 Test Item','Coconut oil']},
-  {id:'p4', name:'Andhra Mango Avakaya (Full Jar)', cat:'kitchen', tag:'Raw mango pickle, hand-pounded spice, sesame oil', price:280, unit:'400g jar', badges:['Hand-pounded','No preservatives']},
-  {id:'p5', name:'Gongura Pickle', cat:'kitchen', tag:'Tangy sorrel-leaf pickle, slow cooked in small batches', price:260, unit:'350g jar', badges:['Small batch']},
-  {id:'p6', name:'Ashwagandha Capsules', cat:'ayurveda', tag:'Root extract capsules for stress & recovery', price:450, unit:'60 capsules', badges:['Lab tested']},
-];
+document.getElementById("year").textContent = new Date().getFullYear();
 
-const ICONS = {
-  kitchen: (c1,c2) => `<svg viewBox="0 0 200 200"><rect width="200" height="200" fill="${c1}"/><rect x="55" y="60" width="90" height="110" rx="14" fill="${c2}"/><rect x="65" y="42" width="70" height="24" rx="8" fill="#221B14" opacity="0.75"/><circle cx="100" cy="115" r="26" fill="${c1}" opacity="0.5"/></svg>`,
-  ayurveda: (c1,c2) => `<svg viewBox="0 0 200 200"><rect width="200" height="200" fill="${c1}"/><ellipse cx="100" cy="130" rx="46" ry="34" fill="${c2}"/><path d="M100 40 C130 70 130 110 100 130 C70 110 70 70 100 40Z" fill="${c2}" opacity="0.85"/><circle cx="100" cy="60" r="6" fill="#F3ECDA"/></svg>`,
-};
-const CAT_COLORS = {kitchen:['#E0A63A','#C1502E'], ayurveda:['#28483A','#6B7F4F']};
-function productArt(p){ return ICONS[p.cat](CAT_COLORS[p.cat][0], CAT_COLORS[p.cat][1]); }
-
-const GREETINGS = {
-  lateNight:  {eyebrow:'12am – 4am', lines:["Burning the midnight tokens — and the midnight tadka.", "Still up? So is the pickle jar."]},
-  earlyMorn:  {eyebrow:'4am – 7am', lines:["Early riser. The kitchen's just waking up too.", "Fresh start, fresh batch."]},
-  morning:    {eyebrow:'7am – 12pm', lines:["Good morning — the ginger's chopped and the tea's on.", "Morning. Let's fill that pantry."]},
-  afternoon:  {eyebrow:'12pm – 5pm', lines:["Afternoon lull? A jar of gongura fixes that.", "Good afternoon from the Cissberry kitchen."]},
-  evening:    {eyebrow:'5pm – 9pm', lines:["Evening's here — snack o'clock.", "Good evening. The tadka's just hit the pan."]},
-  night:      {eyebrow:'9pm – 12am', lines:["Winding down? We'll keep the shelf stocked.", "Good night, in advance — shop away."]},
-};
-function pickGreeting(){
-  const h = new Date().getHours();
-  let band;
-  if(h>=0 && h<4) band = GREETINGS.lateNight;
-  else if(h>=4 && h<7) band = GREETINGS.earlyMorn;
-  else if(h>=7 && h<12) band = GREETINGS.morning;
-  else if(h>=12 && h<17) band = GREETINGS.afternoon;
-  else if(h>=17 && h<21) band = GREETINGS.evening;
-  else band = GREETINGS.night;
-  const line = band.lines[Math.floor(Math.random()*band.lines.length)];
-  return {eyebrow:band.eyebrow, line};
-}
-
-/* ============================================================
-   STATE
-   ============================================================ */
-let cart = JSON.parse(localStorage.getItem('cissberry_cart') || '[]');
-let currentProductId = null;
-let shopFilter = 'all';
-
-function saveCart(){
-  localStorage.setItem('cissberry_cart', JSON.stringify(cart));
-  updateCartCount();
-}
-
-/* ============================================================
-   GREETING
-   ============================================================ */
-(function initGreeting(){
-  const g = pickGreeting();
-  document.getElementById('greeting-eyebrow').textContent = g.eyebrow + ' · Cissberry';
-  document.getElementById('greeting-text').textContent = g.line;
-  document.getElementById('greeting-enter-btn').addEventListener('click', ()=>{
-    const ov = document.getElementById('greeting-overlay');
-    ov.classList.add('leaving');
-    setTimeout(()=>ov.style.display='none', 500);
-  });
-})();
-
-/* ============================================================
-   NAVIGATION
-   ============================================================ */
-function showView(name, opts){
-  opts = opts || {};
-  document.querySelectorAll('.view').forEach(v=>v.classList.add('hidden'));
-  const target = document.getElementById('view-'+name);
-  if(target) target.classList.remove('hidden');
-  document.querySelectorAll('nav.main-nav a').forEach(a=>a.classList.remove('active'));
-  const navLink = document.querySelector(`nav.main-nav a[data-nav="${name}"]`);
-  if(navLink) navLink.classList.add('active');
-  window.scrollTo({top:0,behavior:'instant'});
-  if(name==='shop') renderShop();
-  if(name==='cart') renderCart();
-  if(name==='admin') renderAdmin();
-  if(name==='legal') renderLegal(opts.legalKey || 'terms');
-  if(name==='product' && opts.productId){ currentProductId = opts.productId; renderProductDetail(); }
-  if(!opts.skipHash) setHash(name, opts);
-}
-function setHash(name, opts){
-  opts = opts || {};
-  let h = '#'+name;
-  if(name==='legal') h += '/'+(opts.legalKey||'terms');
-  if(name==='product' && opts.productId) h += '/'+opts.productId;
-  if(name==='shop' && opts.filter) h += (opts.filter!=='all' ? '/'+opts.filter : '');
-  if(location.hash !== h) history.pushState(null,'',h);
-}
-function routeFromHash(){
-  const parts = location.hash.replace('#','').split('/').filter(Boolean);
-  const name = parts[0] || 'home';
-  if(!document.getElementById('view-'+name)){ showView('home',{skipHash:true}); return; }
-  if(name==='legal'){ showView('legal', {legalKey:parts[1]||'terms', skipHash:true}); }
-  else if(name==='product'){ showView('product', {productId:parts[1], skipHash:true}); }
-  else if(name==='shop'){ shopFilter = parts[1] || 'all'; showView('shop', {skipHash:true}); }
-  else { showView(name, {skipHash:true}); }
-}
-window.addEventListener('popstate', routeFromHash);
-
-document.addEventListener('click', (e)=>{
-  const navEl = e.target.closest('[data-nav]');
-  if(navEl){
-    e.preventDefault();
-    if(navEl.dataset.nav==='shop' && navEl.dataset.filter){
-      shopFilter = navEl.dataset.filter;
-    }
-    showView(navEl.dataset.nav, {filter: navEl.dataset.filter, legalKey: navEl.dataset.legalKey});
-  }
-});
-
-/* ============================================================
-   SHOP & PRODUCTS
-   ============================================================ */
-function renderFeatured(){
-  const grid = document.getElementById('home-featured-grid');
-  if(!grid) return;
-  grid.innerHTML = PRODUCTS.map(p=>productCard(p)).join('');
-}
-function renderShop(){
-  const grid = document.getElementById('shop-grid');
-  if(!grid) return;
-  document.querySelectorAll('#filter-row .filter-chip').forEach(c=>{
-    c.classList.toggle('active', c.dataset.filter===shopFilter);
-  });
-  let list = PRODUCTS.filter(p => shopFilter==='all' || p.cat===shopFilter);
-  const sort = document.getElementById('sort-select').value;
-  if(sort==='low') list.sort((a,b)=>a.price-b.price);
-  if(sort==='high') list.sort((a,b)=>b.price-a.price);
-  if(sort==='name') list.sort((a,b)=>a.name.localeCompare(b.name));
-  grid.innerHTML = list.map(p=>productCard(p)).join('');
-}
-function productCard(p){
-  return `
-  <div class="p-card">
-    <div class="p-media" data-open-product="${p.id}">${productArt(p)}</div>
-    <div class="p-badges">${p.badges.map(b=>`<span class="stamp ${b.includes('₹1')?'one-rupee':(p.cat==='kitchen'?'gold':'')}">${b}</span>`).join('')}</div>
-    <div class="p-cat">${p.cat==='kitchen'?'The Kitchen':'The Apothecary'}</div>
-    <div class="p-name" data-open-product="${p.id}">${p.name}</div>
-    <div class="p-tag">${p.tag}</div>
-    <div class="p-bottom">
-      <div class="p-price">₹${p.price} <span style="font-size:12px;font-weight:400;color:#7a6d59;">/ ${p.unit}</span></div>
-      <div class="p-actions">
-        <button class="icon-btn" data-add-cart="${p.id}" title="Add to cart">+</button>
-        <button class="buy-now-btn" data-buy-now="${p.id}">⚡ Buy ₹${p.price}</button>
-      </div>
-    </div>
-  </div>`;
-}
-
-document.getElementById('filter-row').addEventListener('click', (e)=>{
-  const chip = e.target.closest('.filter-chip');
-  if(!chip) return;
-  shopFilter = chip.dataset.filter;
-  renderShop();
-});
-document.getElementById('sort-select').addEventListener('change', renderShop);
-
-document.addEventListener('click', (e)=>{
-  const openEl = e.target.closest('[data-open-product]');
-  if(openEl){ showView('product', {productId: openEl.dataset.openProduct}); }
-
-  const addEl = e.target.closest('[data-add-cart]');
-  if(addEl){ addToCart(addEl.dataset.addCart, 1); toastLite('Added to cart'); }
-
-  const buyEl = e.target.closest('[data-buy-now]');
-  if(buyEl){
-    const p = PRODUCTS.find(x=>x.id===buyEl.dataset.buyNow);
-    if(p) directPay(p.price, p.name);
-  }
-});
-
-function toastLite(msg){
-  const el = document.getElementById('admin-toast');
-  el.textContent = msg; el.classList.add('show');
-  setTimeout(()=>el.classList.remove('show'), 1600);
-}
-
-/* ============================================================
-   PRODUCT DETAIL
-   ============================================================ */
-function renderProductDetail(){
-  const p = PRODUCTS.find(x=>x.id===currentProductId);
-  if(!p) return;
-  document.getElementById('product-detail-content').innerHTML = `
-    <div class="pd-media">${productArt(p)}</div>
-    <div class="pd-info">
-      <div class="p-cat">${p.cat==='kitchen'?'The Kitchen':'The Apothecary'}</div>
-      <h1>${p.name}</h1>
-      <div class="pd-price">₹${p.price} <span style="font-size:13px;font-weight:400;color:#7a6d59;">/ ${p.unit}</span></div>
-      <div class="pd-badges">${p.badges.map(b=>`<span class="stamp ${b.includes('₹1')?'one-rupee':(p.cat==='kitchen'?'gold':'')}">${b}</span>`).join('')}</div>
-      <p class="pd-desc">${p.tag}. Made in-house in small batches — nothing sits on a shelf long enough to need preservatives.</p>
-      <div class="pd-cta-row">
-        <button class="btn btn-outline" id="pd-add-cart">Add to cart</button>
-        <button class="btn btn-phonepe" id="pd-buy-now" style="font-size:15px;padding:14px 28px;">⚡ Buy Now (₹${p.price})</button>
-      </div>
-      <div class="pd-note">1-Click PhonePe checkout without filling long forms.</div>
-    </div>
-  `;
-  document.getElementById('pd-add-cart').onclick = ()=>{ addToCart(p.id, 1); toastLite('Added to cart'); };
-  document.getElementById('pd-buy-now').onclick = ()=>{ directPay(p.price, p.name); };
-}
-
-/* ============================================================
-   CART
-   ============================================================ */
-function addToCart(id, qty){
-  const line = cart.find(c=>c.id===id);
-  if(line) line.qty += qty; else cart.push({id, qty});
-  saveCart();
-}
-function updateCartCount(){
-  document.getElementById('cart-count').textContent = cart.reduce((s,c)=>s+c.qty,0);
-}
-function renderCart(){
-  const el = document.getElementById('cart-content');
-  if(cart.length===0){
-    el.innerHTML = `<div class="empty-state">Your cart is empty.<br><button class="btn btn-primary" data-nav="shop" data-filter="all">Browse products</button></div>`;
-    return;
-  }
-  let subtotal = 0;
-  const lines = cart.map(c=>{
-    const p = PRODUCTS.find(x=>x.id===c.id);
-    if(!p) return '';
-    const lineTotal = p.price * c.qty;
-    subtotal += lineTotal;
-    return `
-    <div class="cart-line">
-      <div class="thumb">${productArt(p)}</div>
-      <div class="cart-line-info">
-        <div class="name">${p.name}</div>
-        <div class="cat">${p.unit}</div>
-      </div>
-      <div class="qty-stepper">
-        <button data-cart-minus="${p.id}">–</button><span>${c.qty}</span><button data-cart-plus="${p.id}">+</button>
-      </div>
-      <div class="cart-line-price">₹${lineTotal}</div>
-      <button class="remove-x" data-cart-remove="${p.id}">Remove</button>
-    </div>`;
-  }).join('');
-  
-  // For ₹1 test orders, keep shipping ₹0
-  const shipping = subtotal <= 10 ? 0 : (subtotal > 999 ? 0 : 60);
-  const total = subtotal + shipping;
-
-  el.innerHTML = `
-    <div class="cart-layout">
-      <div>${lines}</div>
-      <div class="summary-card">
-        <div class="summary-row"><span>Subtotal</span><span>₹${subtotal}</span></div>
-        <div class="summary-row"><span>Shipping</span><span>${shipping===0?'Free':'₹'+shipping}</span></div>
-        <div class="summary-row total"><span>Total</span><span>₹${total}</span></div>
-        <button class="btn btn-phonepe" style="width:100%;justify-content:center;margin-top:16px;padding:14px;" id="cart-pay-btn">
-          ⚡ 1-Click Pay ₹${total} with PhonePe →
-        </button>
-        <div style="font-size:11.5px;color:#7a6d59;margin-top:12px;text-align:center;">
-          🔒 Instant PhonePe Gateway (No forms required)
-        </div>
-      </div>
-    </div>`;
-  document.getElementById('cart-pay-btn').onclick = ()=>{ directPay(total, `Cart Checkout (${cart.length} items)`); };
-}
-
-document.addEventListener('click', (e)=>{
-  const minus = e.target.closest('[data-cart-minus]');
-  const plus = e.target.closest('[data-cart-plus]');
-  const rem = e.target.closest('[data-cart-remove]');
-  if(minus){ const l = cart.find(c=>c.id===minus.dataset.cartMinus); if(l){ l.qty=Math.max(1,l.qty-1); saveCart(); renderCart(); } }
-  if(plus){ const l = cart.find(c=>c.id===plus.dataset.cartPlus); if(l){ l.qty++; saveCart(); renderCart(); } }
-  if(rem){ cart = cart.filter(c=>c.id!==rem.dataset.cartRemove); saveCart(); renderCart(); }
-});
-
-/* ============================================================
-   DIRECT 1-CLICK PHONEPE PAYMENT (NO FORMS)
-   ============================================================ */
-async function directPay(amount, itemName){
-  if(amount <= 0){
-    toastLite('Invalid amount');
-    return;
-  }
+// Direct 1-Click Buy Function
+async function directPay(amountPaise, productName) {
   const overlay = document.getElementById('direct-buy-overlay');
   const title = document.getElementById('direct-buy-title');
-  title.textContent = `Connecting to PhonePe (₹${amount})…`;
+  const subtitle = document.getElementById('direct-buy-subtitle');
+
+  title.textContent = `Purchasing ${productName}…`;
+  subtitle.textContent = `Initiating PhonePe payment for ₹${amountPaise / 100}…`;
   overlay.classList.add('open');
 
   try {
@@ -863,216 +283,88 @@ async function directPay(amount, itemName){
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        amount: Math.round(amount * 100), // convert to paise
-        name: 'Direct Customer',
-        email: 'customer@cissberry.com',
+        name: 'Guest Customer',
+        email: 'customer@frontierstride.com',
         mobile: '9999999999',
-      }),
+        amount: amountPaise
+      })
     });
 
     const data = await res.json();
 
-    if(!res.ok || !data.redirectUrl){
-      throw new Error(data.error || 'Failed to connect to PhonePe');
+    if (!res.ok || !data.redirectUrl) {
+      throw new Error(data.error || 'Could not connect to PhonePe gateway');
     }
 
-    // Direct redirect to PhonePe
+    title.textContent = 'Redirecting to PhonePe…';
     window.location.href = data.redirectUrl;
-  } catch(err){
-    console.error('Payment Error:', err);
+  } catch (err) {
     overlay.classList.remove('open');
-    alert('Payment error: ' + (err.message || 'Could not connect to PhonePe. Please check your credentials.'));
+    alert('Payment Initiation Failed: ' + err.message);
   }
 }
 
-/* ============================================================
-   CONSULTATION FORM
-   ============================================================ */
-document.getElementById('consult-form').addEventListener('submit', (e)=>{
-  e.preventDefault();
-  const fee = Number(document.getElementById('c-type').value) || 1;
-  directPay(fee, 'Ayurvedic Consultation');
-});
-
-/* ============================================================
-   CHECK PAYMENT STATUS ON RETURN
-   ============================================================ */
-async function checkReturnedPayment(){
-  const urlParams = new URLSearchParams(window.location.search);
-  const txnId = urlParams.get('txnId');
-  if(!txnId) return;
+// Payment Return Status Check
+function checkReturnStatus() {
+  const params = new URLSearchParams(window.location.search);
+  const txnId = params.get('txnId');
+  if (!txnId) return;
 
   const modal = document.getElementById('status-modal');
   const icon = document.getElementById('status-icon');
   const title = document.getElementById('status-title');
   const desc = document.getElementById('status-desc');
   const details = document.getElementById('status-details');
-  const actionBtn = document.getElementById('status-action-btn');
 
   modal.classList.add('open');
 
-  try {
-    const res = await fetch(`/api/payment-status?txnId=${encodeURIComponent(txnId)}`);
-    const data = await res.json();
+  let attempts = 0;
+  const poll = async () => {
+    try {
+      const res = await fetch(`/api/payment-status?txnId=${encodeURIComponent(txnId)}`);
+      const data = await res.json();
 
-    const state = data.state;
-    const isSuccess = state === 'COMPLETED' || data.responseCode === 'PAYMENT_SUCCESS';
-    const isPending = state === 'PENDING' || data.responseCode === 'PAYMENT_PENDING';
-
-    if(isSuccess){
-      icon.className = 'status-badge-icon success';
-      icon.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
-      title.textContent = 'Payment Successful! 🎉';
-      desc.textContent = 'Your ₹1 payment has been verified by PhonePe.';
-      
-      // Clear cart
-      cart = [];
-      saveCart();
-      
-      actionBtn.textContent = 'Continue Shopping';
-      actionBtn.onclick = ()=>{
-        modal.classList.remove('open');
-        window.history.replaceState({}, document.title, window.location.pathname);
-        showView('shop');
-      };
-    } else if(isPending){
-      icon.className = 'status-badge-icon pending';
-      icon.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
-      title.textContent = 'Payment Processing… ⏳';
-      desc.textContent = 'Your payment is still being processed by the bank.';
-      actionBtn.textContent = 'Close';
-      actionBtn.onclick = ()=>{
-        modal.classList.remove('open');
-        window.history.replaceState({}, document.title, window.location.pathname);
-      };
-    } else {
-      icon.className = 'status-badge-icon failed';
-      icon.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>`;
-      title.textContent = 'Payment Failed';
-      desc.textContent = data.error || 'Transaction was not completed.';
-      actionBtn.textContent = 'Try Again';
-      actionBtn.onclick = ()=>{
-        modal.classList.remove('open');
-        window.history.replaceState({}, document.title, window.location.pathname);
-      };
+      if (data.state === 'COMPLETED' || data.responseCode === 'SUCCESS' || data.state === 'SUCCESS') {
+        icon.textContent = '🎉';
+        title.textContent = 'Payment Successful!';
+        title.style.color = '#15803d';
+        desc.textContent = `Thank you! Your payment of ₹${(data.amount || 100) / 100} was successful.`;
+        details.style.display = 'block';
+        details.innerHTML = `
+          <div><strong>Order ID:</strong> ${data.orderId || txnId}</div>
+          <div><strong>Txn ID:</strong> ${data.transactionId || txnId}</div>
+          <div><strong>Mode:</strong> ${data.paymentInstrument?.type || 'UPI'}</div>
+          <div><strong>Status:</strong> <span style="color:#15803d;font-weight:bold;">PAID</span></div>
+        `;
+      } else if (data.state === 'FAILED') {
+        icon.textContent = '❌';
+        title.textContent = 'Payment Failed';
+        title.style.color = '#b91c1c';
+        desc.textContent = 'The transaction was declined or failed. Please try again.';
+      } else if (attempts < 6) {
+        attempts++;
+        setTimeout(poll, 2000);
+      } else {
+        icon.textContent = 'ℹ️';
+        title.textContent = 'Payment Processing';
+        desc.textContent = `Your transaction (${txnId}) is being verified. Check your UPI app.`;
+      }
+    } catch (e) {
+      icon.textContent = '⚠️';
+      title.textContent = 'Verification Error';
+      desc.textContent = 'Could not verify payment status automatically.';
     }
+  };
 
-    details.style.display = 'block';
-    details.innerHTML = `
-      <div style="display:flex;justify-content:space-between;font-size:13px;padding:4px 0;border-bottom:1px solid var(--line);">
-        <span style="color:#7a6d59;">Transaction ID</span>
-        <span style="font-family:var(--font-mono);font-weight:700;">${txnId}</span>
-      </div>
-      ${data.amount ? `
-      <div style="display:flex;justify-content:space-between;font-size:13px;padding:4px 0;border-bottom:1px solid var(--line);">
-        <span style="color:#7a6d59;">Amount Paid</span>
-        <span style="font-family:var(--font-mono);font-weight:700;">₹${(data.amount/100).toFixed(2)}</span>
-      </div>` : ''}
-    `;
-  } catch(err){
-    console.error('Status check error:', err);
-    icon.className = 'status-badge-icon failed';
-    title.textContent = 'Status Verification';
-    desc.textContent = 'Could not verify transaction status.';
-    actionBtn.textContent = 'Close';
-    actionBtn.onclick = ()=>{ modal.classList.remove('open'); };
-  }
+  poll();
 }
 
-/* ============================================================
-   ADMIN
-   ============================================================ */
-function renderAdmin(){
-  const tbody = document.getElementById('admin-tbody');
-  tbody.innerHTML = PRODUCTS.map(p=>`
-    <tr data-row="${p.id}">
-      <td><input data-field="name" value="${p.name}"></td>
-      <td><select data-field="cat"><option value="kitchen"${p.cat==='kitchen'?' selected':''}>Kitchen</option><option value="ayurveda"${p.cat==='ayurveda'?' selected':''}>Ayurveda</option></select></td>
-      <td><input data-field="price" type="number" value="${p.price}" style="width:80px;"></td>
-      <td><input data-field="unit" value="${p.unit}"></td>
-      <td><input data-field="tag" value="${p.tag}"></td>
-      <td class="admin-actions">
-        <button class="save-btn" data-save="${p.id}">Save</button>
-        <button class="del-btn" data-del="${p.id}">Delete</button>
-      </td>
-    </tr>
-  `).join('');
+function closeStatusModal() {
+  document.getElementById('status-modal').classList.remove('open');
+  window.history.replaceState({}, document.title, window.location.pathname);
 }
-document.getElementById('admin-tbody').addEventListener('click', (e)=>{
-  const saveBtn = e.target.closest('[data-save]');
-  const delBtn = e.target.closest('[data-del]');
-  if(saveBtn){
-    const row = document.querySelector(`tr[data-row="${saveBtn.dataset.save}"]`);
-    const p = PRODUCTS.find(x=>x.id===saveBtn.dataset.save);
-    p.name = row.querySelector('[data-field="name"]').value;
-    p.cat = row.querySelector('[data-field="cat"]').value;
-    p.price = Number(row.querySelector('[data-field="price"]').value);
-    p.unit = row.querySelector('[data-field="unit"]').value;
-    p.tag = row.querySelector('[data-field="tag"]').value;
-    toastLite('Product saved'); renderFeatured();
-  }
-  if(delBtn){
-    PRODUCTS = PRODUCTS.filter(x=>x.id!==delBtn.dataset.del);
-    renderAdmin(); renderFeatured();
-    toastLite('Product deleted');
-  }
-});
-document.getElementById('add-product-form').addEventListener('submit', (e)=>{
-  e.preventDefault();
-  const id = 'p'+Math.random().toString(36).slice(2,8);
-  PRODUCTS.push({
-    id, name:document.getElementById('np-name').value,
-    cat:document.getElementById('np-cat').value,
-    price:Number(document.getElementById('np-price').value),
-    unit:document.getElementById('np-unit').value,
-    tag:document.getElementById('np-tag').value || 'New product',
-    badges:['New'],
-  });
-  e.target.reset();
-  renderAdmin(); renderFeatured();
-  toastLite('Product added');
-});
 
-/* ============================================================
-   LEGAL
-   ============================================================ */
-const LEGAL = {
-  terms: `<h2>Terms and Conditions</h2><p>By using www.cissberry.com you agree to these terms.</p>`,
-  refund: `<h2>Refund Policy</h2><p>If your order arrives damaged, contact us within 48 hours.</p>`,
-  privacy: `<h2>Privacy Policy</h2><p>Payment details are processed directly by PhonePe.</p>`,
-  return: `<h2>Return Policy</h2><p>Consumable goods are non-returnable once opened.</p>`,
-  shipping: `<h2>Shipping Policy</h2><p>Orders dispatched within 2–4 business days.</p>`,
-  medical: `<h2>Medical Disclaimer</h2><p>Ayurvedic products are general wellness guidance.</p>`,
-};
-function renderLegal(key){
-  if(!LEGAL[key]) key = 'terms';
-  document.querySelectorAll('.legal-nav .filter-chip').forEach(c=>c.classList.toggle('active', c.dataset.legal===key));
-  document.getElementById('legal-content').innerHTML = LEGAL[key];
-  const fullUrl = location.origin + location.pathname + '#legal/' + key;
-  document.getElementById('legal-url-code').textContent = fullUrl;
-}
-document.getElementById('legal-url-copy').addEventListener('click', ()=>{
-  const text = document.getElementById('legal-url-code').textContent;
-  navigator.clipboard && navigator.clipboard.writeText(text).catch(()=>{});
-  toastLite('URL copied');
-});
-document.querySelector('.legal-nav').addEventListener('click', (e)=>{
-  const chip = e.target.closest('[data-legal]');
-  if(chip) showView('legal', {legalKey: chip.dataset.legal});
-});
-
-/* ============================================================
-   INIT
-   ============================================================ */
-renderFeatured();
-updateCartCount();
-if(window.location.search.includes('txnId')){
-  checkReturnedPayment();
-} else if(location.hash){
-  routeFromHash();
-} else {
-  renderLegal('terms');
-}
+window.addEventListener('DOMContentLoaded', checkReturnStatus);
 </script>
 </body>
 </html>
